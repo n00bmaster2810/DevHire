@@ -10,7 +10,7 @@ var user = new mongoose.Schema(
 			type: String,
 			require: true
 		},
-		username: {
+		email: {
 		  type: String,
 			require: true
 		},
@@ -23,4 +23,4 @@ var user = new mongoose.Schema(
   { timestamps: true }
 );
 
-modules.export = mongoose.model("Users", user);
+module.exports = mongoose.model("User", user);
