@@ -21,7 +21,7 @@ connection.once("open", () => {
   console.log("mongo not connected")
 });
 
-//passport config
+//passport config for sessions and storing login data
 const passportInit = require("./config/passport")
 passportInit(passport)
 app.use(passport.initialize());
