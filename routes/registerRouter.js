@@ -11,8 +11,21 @@ registerRouter.post("/register", async (req, res) => {
 
   //validate request
   if (!firstName || !lastName || !email || !password) {
+    req.flash("error", "All fields are mandatory");
+    req.flash("firstname", firstName);
+    req.flash("lastname", lastName);
+    req.flash("email", email);
     return res.redirect("/");
   }
+
+  //Check if email exists
+  User.exists({ email: email }, (err, result) => {
+    if (result) {
+      req.flash("error", "Email Exists");
+      return res.redirect("/");
+    }
+  });
+
   //password hashing by use of bcrypt
 	const hashedPassword = await bcrypt.hash(password, 10);
 	
