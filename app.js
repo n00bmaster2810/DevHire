@@ -13,12 +13,9 @@ const developerRouter = require("./routes/developerRouter");
 const companyRouter = require("./routes/companyRouter");
 const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/loginRouter");
-<<<<<<< HEAD
-
-
-=======
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
->>>>>>> a9cd61802faa28382019d9c97fe7a904ed58fb29
+
+
 const app = express();
 const port = 3000 || process.env.PORT;
 
@@ -32,7 +29,6 @@ connection.once("open", () => {
   console.log("mongo not connected");
 });
 
-<<<<<<< HEAD
 //sesion store
 let mongoStore = new MongoDbStore({
   mongooseConnection: connection,
@@ -50,14 +46,9 @@ app.use(session({
 
 app.use(flash());
 
-//passport config
-const passportInit = require("./config/passport");
-passportInit(passport);
-=======
 //passport config for sessions and storing login data
 const passportInit = require("./config/passport")
 passportInit(passport)
->>>>>>> a9cd61802faa28382019d9c97fe7a904ed58fb29
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -80,15 +71,12 @@ app.use("/", developerRouter);
 app.use("/", companyRouter);
 app.use("/", registerRouter);
 app.use("/", loginRouter);
-<<<<<<< HEAD
 app.post("/logout", (req, res) => {
   req.logout();
   return res.redirect("/");
 })
 
-=======
 app.use("/",myPortfolioRouter);
->>>>>>> a9cd61802faa28382019d9c97fe7a904ed58fb29
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

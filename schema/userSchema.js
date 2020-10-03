@@ -12,7 +12,7 @@ var user = new mongoose.Schema(
 		},
 		email: {
 		  type: String,
-			require: true,
+			require: true, 
 			unique: true
 		},
 		password: {
