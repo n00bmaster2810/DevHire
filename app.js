@@ -8,6 +8,7 @@ const developerRouter = require("./routes/developerRouter");
 const companyRouter = require("./routes/companyRouter");
 const registerRouter = require("./routes/registerRouter");
 const loginRouter = require("./routes/loginRouter");
+const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const app = express();
 const port = 3000 || process.env.PORT;
 const passport = require("passport")
@@ -40,7 +41,7 @@ app.use("/", developerRouter);
 app.use("/", companyRouter);
 app.use("/", registerRouter);
 app.use("/", loginRouter);
-
+app.use("/",myPortfolioRouter);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
