@@ -70,6 +70,10 @@ app.use("/", developerRouter);
 app.use("/", companyRouter);
 app.use("/", registerRouter);
 app.use("/", loginRouter);
+app.post("/logout", (req, res) => {
+  req.logout();
+  return res.redirect("/");
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);

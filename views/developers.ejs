@@ -63,8 +63,10 @@
     <input class="form-control mr-sm-2" type="search" placeholder="search" aria-label="Search">
     <button class="btn btn-outline-success" >Search</button>
   </form>
-
-  <button class="btn btn-outline-success" >Logout</button>
+  <form action="/logout" id="logout" method="POST">
+    <button class="btn btn-outline-success" type="submit" onclick="document.getElementById('logout')">Logout</button>
+  </form>
+  
 
         </nav>
 

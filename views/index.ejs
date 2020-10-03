@@ -53,6 +53,44 @@
             </button>
           </div>
           <div class="modal-body">
+            <form>
+              <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input name="email" type="email" class="form-control" id="email" />
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-10">
+                  <input name="pssword"  type="password" class="form-control" id="password" />
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">Radios</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
+                      <label class="form-check-label" for="gridRadios1"> First radio </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
+                      <label class="form-check-label" for="gridRadios2"> Second radio </label>
+                    </div>
+                    <div class="form-check disabled">
+                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled />
+                      <label class="form-check-label" for="gridRadios3"> Third disabled radio </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Sign in</button>
+                </div>
+              </div>
+            </form>
             <form action="/register" method="POST">
               <% if(messages.error){ %>
               <span class="text-danger"><%= messages.error %> </span>
@@ -73,9 +111,20 @@
                 <label for="password">Password:</label>
                 <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
               </div>
-              <!--<div class="form-group form-check">
-                <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Remember me </label>
-              </div>-->
+              <fieldset class="form-group">
+                <div class="row">
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="developer" id="developer" checked />
+                      <label class="form-check-label" for="developer"> I'm a developer </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="company" id="company" />
+                      <label class="form-check-label" for="company"> I'm a recruiter </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
