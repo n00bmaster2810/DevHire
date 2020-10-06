@@ -39,6 +39,7 @@ var myPortfolio = new mongoose.Schema(
 		{
 		  data :Buffer,
 		  contentType :String
+		  
 
 		}
 
