@@ -75,8 +75,8 @@ app.post("/logout", (req, res) => {
   req.logout();
   return res.redirect("/");
 })
+app.use("/", myPortfolioRouter);
 
-app.use("/",myPortfolioRouter);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
