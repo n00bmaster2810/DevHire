@@ -114,19 +114,22 @@
 		<div class="modal-body">
 		 
 
-            <!-- it contains form to post details of openings -->
-		  <form action="/action_page.php">
+
+
+
+		  <form action="/jobPost" method="POST">
+
 			<div class="form-group">
-			  <label for="text">Job Offer</label>
-			  <input type="text" class="form-control" placeholder="Enter Job Offer" id="jobOffer">
+			  <label for="jobOffer">Job Offer</label>
+			  <input type="text" class="form-control" placeholder="Enter Job Offer" id="jobOffer" name="jobOffer" required>
 			</div>
 			<div class="form-group">
-			  <label for="text">Description </label>
-			  <input type="text" class="form-control" placeholder="Enter Brief Description of Job" id="desc">
+			  <label for="description">Description </label>
+			  <input type="text" class="form-control" placeholder="Enter Brief Description of Job" id="description" name="description" required>
 			</div>
 			<div class="form-group">
-				<label for="text">CTC </label>
-				<input type="text" class="form-control" placeholder="CTC Offered" id="text">
+				<label for="tags">CTC </label>
+				<input type="text" class="form-control" placeholder="CTC Offered" id="tags" name="tags" required>
 			  </div>
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
