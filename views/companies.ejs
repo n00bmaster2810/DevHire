@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Company Home Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-      crossorigin="anonymous"
-    />
-  </head>
+   <head>
+     <title>Company Home Page</title>
+          <meta charset="utf-8" />
+		  <meta name="viewport" content="width=device-width, initial-scale=1"
+
+		  />
+              <link
+                  rel="stylesheet"
+                  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+                  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+                  crossorigin="anonymous"
+              />
+    </head>
+  
   <body>
     
 	<nav class="navbar navbar-inverse" style="background-color: rgb(2, 2, 20); ">
@@ -61,23 +64,38 @@
 		  <span class="glyphicon glyphicon-chevron-right"></span>
 		  <span class="sr-only">Next</span>
 		</a>
-	  </div>
+   </div>
 
 
-
-
+    <!-- body of page that contains company details -->
     <div class="container" style="display: inline-block;">
-      <h1>Company Name</h1>
-      <!-- <p>This is some text.</p> -->
-    
-	<!-- Button to Open the Modal -->
-<button type="button" class="btn btn-primary" class="align-center" data-toggle="modal" data-target="#myModal">
-	Post an offer
-  </button>
-  <button  class="btn-danger" data-toggle="collapse" data-target="#demo"   >Company Details </button>
-  
-</div>
-  <!-- The Modal -->
+	  <h1>Company Name</h1>
+	  
+
+        <!-- Button to Open the Modal for posting a job opening -->
+       <button type="button" class="btn btn-primary" class="align-center" data-toggle="modal" data-target="#myModal">
+	      Post an offer
+	   </button>
+		
+
+
+         <!-- details of company collapse -->
+        <button  class="btn-danger" data-toggle="collapse" data-target="#demo"   >Company Details </button>
+		  
+		<div id="demo" class="collapse">
+			<div class="panel panel-default">
+			  <div class="panel-body">A Basic Panel</div>
+			</div>
+		</div>
+		  
+
+	</div>
+	
+
+
+
+	 
+     <!-- The Modal which opens when post an offer button gets clicked-->
   <div class="modal" id="myModal">
 	<div class="modal-dialog">
 	  <div class="modal-content">
@@ -95,23 +113,23 @@
 
 
 
-		  <form action="/action_page.php">
+		  <form action="/jobPost" method="POST">
+
 			<div class="form-group">
-			  <label for="text">Job Offer</label>
-			  <input type="text" class="form-control" placeholder="Enter Job Offer" id="jobOffer">
+			  <label for="jobOffer">Job Offer</label>
+			  <input type="text" class="form-control" placeholder="Enter Job Offer" id="jobOffer" name="jobOffer" required>
 			</div>
 			<div class="form-group">
-			  <label for="text">Description </label>
-			  <input type="text" class="form-control" placeholder="Enter Brief Description of Job" id="desc">
+			  <label for="description">Description </label>
+			  <input type="text" class="form-control" placeholder="Enter Brief Description of Job" id="description" name="description" required>
 			</div>
 			<div class="form-group">
-				<label for="text">CTC </label>
-				<input type="text" class="form-control" placeholder="CTC Offered" id="text">
+				<label for="tags">CTC </label>
+				<input type="text" class="form-control" placeholder="CTC Offered" id="tags" name="tags" required>
 			  </div>
 			
 			<button type="submit" class="btn btn-primary">Submit</button>
 		  </form>
-
 
 
 		</div>
@@ -124,83 +142,95 @@
 	  </div>
 	</div>
   </div>
-</div>
+
   
-<div > 
+   
+
+  <!-- jumbotron that contains recent posts by company -->
+<div class="jumbotron" alignment="align-center" class="container ">
+	  <h1>Recent Posts</h1>
+	  <p>My recent Posts</p>
 
 
-<div id="demo" class="collapse">
+         <!-- recent posts viewed by cards which contain details button -->
+ <div class="align-center" display="inline"> 
 
-  <div class="panel panel-default">
-    <div class="panel-body">A Basic Panel</div>
+		      <!-- dummy card 1 -->
+	       <div class="card" style="width:400px">
+		     <img class="card-img-top" src="jaipur.jpg" alt="Card image">
+		        <div class="card-body">
+		             <h4 class="card-title">sde1</h4>
+		                <p class="card-text">Some example text.</p>
+		                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModall">See details</a>
+	        	</div>
+			</div>
+			
+			   <!-- dummy card 2 -->
+	        <div class="card" style="width:400px">
+		     <img class="card-img-top" src="jaipur.jpg" alt="Card image">
+		          <div class="card-body">
+		              <h4 class="card-title">sde1</h4>
+		                 <p class="card-text">Some example text.</p>
+		                 <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModall" >See details</a>
+
+
+		            </div>
+			</div>
+			
+                <!-- dummy card 3 -->
+	   <div class="card" style="width:400px">
+		    <img class="card-img-top" src="jaipur.jpg" alt="Card image">
+		    <div class="card-body">
+		    <h4 class="card-title">sde1</h4>
+		    <p class="card-text">Some example text.</p>
+		    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModall">See details</a>
+		    </div>
+	   </div>
+ </div>
+</div>
+
+
+
+
+<!-- model of details of every card -->
+<div class="modal" id="myModall">
+	<div class="modal-dialog">
+	  <div class="modal-content">
+  
+		<!-- Modal Header -->
+		<div class="modal-header">
+		  <h4 class="modal-title">Opening Details</h4>
+		  <button type="button" class="close" data-dismiss="modal">&times;</button>
+		</div>
+  
+		<!-- Modal body -->
+		<div class="modal-body">
+		<p>   CTC Offered-150 repeya.</p>
+	    <p> Location-Bang alore</p>
+        <p>SDE1 role</p>
+
+        <p>
+        Hey Folks!
+        After receiving numerous requests for correcting the errors made by the students during registration for Avishkar, we are releasing a form for the same. All concerned students are requested to fill the form in case you have made any blunder during the registration for the events.
+        https://forms.gle/cG8QRg1Fo59DCTrG6
+        Do make sure that you provide all necessary information as stated in the form to avoid any follow up. Once corrected, you will be informed via Microsoft Teams.
+        Thank You
+        Team Avishkar
+        PS -  Make sure you read the instructions carefully on the website to avoid any errors in the future.
+        </p>
+
+		</div>
+  
+		<!-- Modal footer -->
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+		</div>
+  
+		
+	  </div>
+	</div>
   </div>
 
-
-</div>
-</div>
-
-
-
-
-  
-  <div class="jumbotron" alignment="align-center" class="container ">
-	<h1>Recent Posts</h1>
-	<p>Company's recent Posts</p>
-	<div class="align-center" display="inline"> 
-	<div class="card" style="width:400px">
-		<img class="card-img-top" src="/images/jaipur.jpg" alt="Card image">
-		<div class="card-body">
-		  <h4 class="card-title">sde1</h4>
-		  <p class="card-text">Some example text.</p>
-		  <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModall">See details</a>
-		</div>
-	  </div>
-	  <div class="card" style="width:400px">
-		<img class="card-img-top" src="/images/jaipur.jpg" alt="Card image">
-		<div class="card-body">
-		  <h4 class="card-title">sde1</h4>
-		  <p class="card-text">Some example text.</p>
-		  <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModall" >See details</a>
-
-
-		  <div class="modal" id="myModall">
-			<div class="modal-dialog">
-			  <div class="modal-content">
-		  
-				<!-- Modal Header -->
-				<div class="modal-header">
-				  <h4 class="modal-title">Opening Details</h4>
-				  <button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-		  
-				<!-- Modal body -->
-				<div class="modal-body">
-				<p>   CTC Offered-150 repeya.</p>
-			<p> Location-Bang alore</p>
-		<p>SDE1 role</p>
-
-<p>
-	Hey Folks!
-After receiving numerous requests for correcting the errors made by the students during registration for Avishkar, we are releasing a form for the same. All concerned students are requested to fill the form in case you have made any blunder during the registration for the events.
-https://forms.gle/cG8QRg1Fo59DCTrG6
-Do make sure that you provide all necessary information as stated in the form to avoid any follow up. Once corrected, you will be informed via Microsoft Teams.
-Thank You
-Team Avishkar
-PS -  Make sure you read the instructions carefully on the website to avoid any errors in the future.
-</p>
-
-
-
-				</div>
-		  
-				<!-- Modal footer -->
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-				</div>
-		  
-			  </div>
-			</div>
-		  </div>
 
 
 
