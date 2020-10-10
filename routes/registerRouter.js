@@ -1,6 +1,8 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const User = require("../schema/userSchema");
+const Developer = require("../schema/developerSchema");
+const Company = require("../schema/companySchema");
 const registerRouter = express.Router();
 
 
@@ -18,6 +20,9 @@ registerRouter.post("/register", async (req, res) => {
     return res.redirect("/");
   }
 
+  const comp = req.body.company;
+  const dev = req.body.developer;
+  
   //Check if email exists
   User.exists({ email: email }, (err, result) => {
     if (result) {
@@ -27,7 +32,31 @@ registerRouter.post("/register", async (req, res) => {
   });
 
   //password hashing by use of bcrypt
-	const hashedPassword = await bcrypt.hash(password, 10);
+  const hashedPassword = await bcrypt.hash(password, 10);
+  
+  if (comp === "on") {
+    const company = new Company({
+      email: email,
+      password: hashedPassword
+    });
+    try {
+      await company.save();
+      res.redirect("/");
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  } else if (dev === "on") {
+    const developer = new Developer({
+      email: email,
+      password: hashedPassword,
+    });
+    try {
+      await developer.save();
+      res.redirect("/");
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  }
 	
   //storing req body data in database
   const user = new User({
@@ -41,7 +70,7 @@ registerRouter.post("/register", async (req, res) => {
     await user.save();
     res.redirect("/");
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500);
   }
   console.log(req.body);
 });

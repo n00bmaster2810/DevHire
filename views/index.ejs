@@ -13,7 +13,7 @@
   </head>
   <body>
     <!-- model for button login -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModal" aria-hidden="true">
+    <div class="modal fade" id="loginModal" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content rounded">
           <div class="modal-header">
@@ -22,24 +22,49 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <ul class="nav nav-tab mb-3" id="login-tab" role="tablist">
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link active" id="dev-tab-login" data-toggle="tab" href="#dev-login" role="tab">I'm a developer</a>
+            </li>
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link" id="comp-tab-login" data-toggle="tab" href="#comp-login" role="tab">I'm here to hire</a>
+            </li>
+          </ul>
           <div class="modal-body">
-            <form action="/login" method="POST">
-              <% if(messages.error){ %>
-              <span class="text-danger"><%= messages.error %> </span>
-              <% } %>
-              <div class="form-group">
-                <label for="email">Email address:</label>
-                <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
+            <div class="tab-content" id="login-tabContent">
+              <div class="tab-pane fade show active" id="dev-login" role="tabpanel">
+                <form action="/login" method="POST">
+                  <% if(messages.error){ %>
+                  <span class="text-danger"><%= messages.error %> </span>
+                  <% } %>
+                  <div class="form-group">
+                    <label for="email">Email address of the developer:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="password" />
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input name="password" type="password" class="form-control" placeholder="Enter password" id="password" />
+              <div class="tab-pane fade" id="comp-login" role="tabpanel">
+                <form action="/login" method="POST">
+                  <% if(messages.error){ %>
+                  <span class="text-danger"><%= messages.error %> </span>
+                  <% } %>
+                  <div class="form-group">
+                    <label for="email">Email address of the company:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="password" />
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
               </div>
-              <!--<div class="form-group form-check">
-                <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Remember me </label>
-              </div>-->
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -55,38 +80,61 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <ul class="nav nav-tab mb-3" id="reg-tab" role="tablist">
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link active" id="dev-tab-reg" data-toggle="tab" href="#dev-reg" role="tab">I'm a developer</a>
+            </li>
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link" id="comp-tab-reg" data-toggle="tab" href="#comp-reg" role="tab">I'm here to hire</a>
+            </li>
+          </ul>
           <div class="modal-body">
-            <form action="/register" method="POST">
-              <% if(messages.error){ %>
-              <span class="text-danger"><%= messages.error %> </span>
-              <% } %>
-              <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
+            <div class="tab-content" id="reg-tabContent">
+              <div class="tab-pane fade show active" id="dev-reg" role="tabpanel">
+                <form action="/register" method="POST">
+                  <% if(messages.error){ %>
+                  <span class="text-danger"><%= messages.error %> </span>
+                  <% } %>
+                  <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input required name="lastName" type="text" class="form-control" placeholder="Enter your Last Name" id="lastName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="loginEmail" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
               </div>
-              <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input required name="lastName" type="text" class="form-control" placeholder="Enter your Last Name" id="lastName" />
+              <div class="tab-pane fade" id="comp-reg" role="tabpanel">
+                <form action="/register" method="POST">
+                  <% if(messages.error){ %>
+                  <span class="text-danger"><%= messages.error %> </span>
+                  <% } %>
+                  <div class="form-group">
+                    <label for="companyName">Company's name:</label>
+                    <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="loginEmail" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
               </div>
-              <div class="form-group">
-                <label for="email">Email address:</label>
-                <input required name="email" type="email" class="form-control" placeholder="Enter email" id="loginEmail" />
-              </div>
-              <div class="form-group">
-                <label for="password">Password:</label>
-                <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="developer" id="developer" />
-                <label class="form-check-label" for="developer">I'm a developer</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="company" id="company" />
-                <label class="form-check-label" for="company">I'm here to hire</label>
-              </div>
-              <br>
-              <button type="submit" class="btn btn-primary mt-3">Submit</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
