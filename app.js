@@ -17,6 +17,7 @@ const loginCompRouter = require("./routes/loginCompRouter");
 const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
+const companyProfile = require("./routes/companyProfileRouter");
 
 
 const app = express();
@@ -82,7 +83,8 @@ app.post("/logout", (req, res) => {
 })
 app.use("/", myPortfolioRouter);
 
-app.use("/",jobPostRouter);
+app.use("/", jobPostRouter);
+app.use("/",companyProfile);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
