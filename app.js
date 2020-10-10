@@ -11,8 +11,10 @@ const MongoDbStore = require("connect-mongo")(session); //package to store sessi
 const indexRouter = require('./routes/index');
 const developerRouter = require("./routes/developerRouter");
 const companyRouter = require("./routes/companyRouter");
-const registerRouter = require("./routes/registerRouter");
-const loginRouter = require("./routes/loginRouter");
+const registerDevRouter = require("./routes/registerDevRouter");
+const registerCompRouter = require("./routes/registerCompRouter");
+const loginCompRouter = require("./routes/loginCompRouter");
+const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
 
@@ -70,8 +72,10 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use("/", developerRouter);
 app.use("/", companyRouter);
-app.use("/", registerRouter);
-app.use("/", loginRouter);
+app.use("/", registerDevRouter);
+app.use("/", registerCompRouter);
+app.use("/", loginCompRouter);
+app.use("/", loginDevRouter);
 app.post("/logout", (req, res) => {
   req.logout();
   return res.redirect("/");

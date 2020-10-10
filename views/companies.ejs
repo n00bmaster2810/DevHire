@@ -15,14 +15,15 @@
   <body>
     <nav class="navbar navbar-inverse" style="background-color: rgb(2, 2, 20)">
       <div class="container" style="background-color: rgb(2, 2, 20)">
-        <div class="container">
-          <div class="navbar-header" class="container">
-            <a href="#">
-              <img src="/images/jaipur.jpg" class="rounded" class="container" alt="Cinque Terre" style="color: beige" height="50" />
-            </a>
-            <a class="navbar-brand" href="#">Company Name</a>
-          </div>
+        <div class="navbar-header" class="container">
+          <a href="#">
+            <img src="/images/jaipur.jpg" class="rounded" class="container" alt="Cinque Terre" style="color: beige" height="50" />
+          </a>
+          <a class="navbar-brand" href="#">Company Name</a>
         </div>
+        <form action="/logout" id="logout" method="POST">
+          <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
+        </form>
       </div>
     </nav>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
