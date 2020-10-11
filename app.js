@@ -19,7 +19,6 @@ const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
 const companyProfile = require("./routes/companyProfileRouter");
 
-
 const app = express();
 const port = 3000 || process.env.PORT;
 
@@ -36,8 +35,8 @@ connection.once("open", () => {
 //sesion store
 let mongoStore = new MongoDbStore({
   mongooseConnection: connection,
-  collection: "sessions", 
-})
+  collection: "sessions",
+});
 
 //session config
 app.use(session({
@@ -51,8 +50,8 @@ app.use(session({
 app.use(flash());
 
 //passport config for sessions and storing login data
-const passportInit = require("./config/passport")
-passportInit(passport)
+const passportInit = require("./config/passport");
+passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -80,7 +79,7 @@ app.use("/", loginDevRouter);
 app.post("/logout", (req, res) => {
   req.logout();
   return res.redirect("/");
-})
+});
 app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
