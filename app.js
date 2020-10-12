@@ -4,7 +4,7 @@ const path = require('path');
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session"); //package for session
-const flash = require("express-flash"); //package for displaying messages on the front end
+const flash = require("connect-flash"); //package for displaying messages on the front end
 const MongoDbStore = require("connect-mongo")(session); //package to store session in our mongo database
 
 // router imports
@@ -50,14 +50,24 @@ app.use(session({
 app.use(flash());
 
 //passport config for sessions and storing login data
-const passportInit = require("./config/passport");
-passportInit(passport);
+const passportInitComp = require("./config/passportComp");
+passportInitComp(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
+const passportInitDev = require("./config/passportDev");
+passportInitDev(passport);
+app.use(passport.initialize());
+app.use(passport.session());
 //Global middleware can be used accessed anywhere so as to help store the user login in session
 app.use((req, res, next) => {
   res.locals.user = req.user;
+  next();
+});
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
   next();
 });
 

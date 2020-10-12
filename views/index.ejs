@@ -12,6 +12,9 @@
     />
   </head>
   <body>
+    <% if(error){ %>
+    <div class="bg-danger pl-5"><%= error %> </div>
+    <% } %>
     <!-- model for button login -->
     <div class="modal fade" id="loginModal" tabindex="-1">
       <div class="modal-dialog">
@@ -34,9 +37,6 @@
             <div class="tab-content" id="login-tabContent">
               <div class="tab-pane fade show active" id="dev-login" role="tabpanel">
                 <form action="/loginDev" method="POST">
-                  <% if(messages.error){ %>
-                  <span class="text-danger"><%= messages.error %> </span>
-                  <% } %>
                   <div class="form-group">
                     <label for="email">Email address of the developer:</label>
                     <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
@@ -50,9 +50,6 @@
               </div>
               <div class="tab-pane fade" id="comp-login" role="tabpanel">
                 <form action="/loginComp" method="POST">
-                  <% if(messages.error){ %>
-                  <span class="text-danger"><%= messages.error %> </span>
-                  <% } %>
                   <div class="form-group">
                     <label for="email">Email address of the company:</label>
                     <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
@@ -92,9 +89,6 @@
             <div class="tab-content" id="reg-tabContent">
               <div class="tab-pane fade show active" id="dev-reg" role="tabpanel">
                 <form action="/registerDev" method="POST">
-                  <% if(messages.error){ %>
-                  <span class="text-danger"><%= messages.error %> </span>
-                  <% } %>
                   <div class="form-group">
                     <label for="firstName">First Name:</label>
                     <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
@@ -116,9 +110,6 @@
               </div>
               <div class="tab-pane fade" id="comp-reg" role="tabpanel">
                 <form action="/registerComp" method="POST">
-                  <% if(messages.error){ %>
-                  <span class="text-danger"><%= messages.error %> </span>
-                  <% } %>
                   <div class="form-group">
                     <label for="companyName">Company's name:</label>
                     <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />

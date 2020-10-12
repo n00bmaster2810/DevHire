@@ -34,7 +34,7 @@ registerCompRouter.post("/registerComp", async (req, res) => {
     await company.save();
     res.redirect("/");
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500);
   }
 
   //storing req body data in database

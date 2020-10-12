@@ -1,5 +1,6 @@
 const express = require("express");
 const passport = require("passport");
+const Company = require("../schema/companySchema");
 const loginCompRouter = express.Router();
 
 loginCompRouter.post("/loginComp", (req, res, next) => {
@@ -17,7 +18,7 @@ loginCompRouter.post("/loginComp", (req, res, next) => {
         req.flash("error", info.message);
         return next(err);
       }
-      return res.redirect("/companies");  
+      return res.redirect("/companies");
     });
   })(req, res, next);
 });

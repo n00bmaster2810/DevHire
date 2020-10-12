@@ -1,14 +1,14 @@
 const LocalStrategy = require("passport-local").Strategy;
-const User = require("../schema/userSchema");
+const Company = require("../schema/companySchema");
 const bcrypt = require("bcrypt");
 
 const init = (passport) => {
 	passport.use(new LocalStrategy({ usernameField: "email" }, async (email, password, done) => {
 		//Login
 		//check if email exists
-		const user = await User.findOne({ email: email });
+		const user = await Company.findOne({ email: email });
 		if (!user) {
-			return done(null, false, { message: "No user with this email found" })
+			return done(null, false, { message: "No Company with this email found" })
 		}
 		try {
 			//comparing the password
@@ -30,7 +30,7 @@ const init = (passport) => {
 		done(null, user._id)
 	});
 	passport.deserializeUser((id, done) => {
-		User.findById(id, (err, user) => {
+		Company.findById(id, (err, user) => {
 			done(err, user)
 		});
 	});

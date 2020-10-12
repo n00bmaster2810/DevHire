@@ -35,7 +35,7 @@ registerDevRouter.post("/registerDev", async (req, res) => {
     await developer.save();
     res.redirect("/");
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500);
   }
 
   //storing req body data in database
