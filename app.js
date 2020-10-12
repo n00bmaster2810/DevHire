@@ -17,6 +17,7 @@ const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
 const companyProfile = require("./routes/companyProfileRouter");
+const trending = require("./routes/trendingRouter");
 
 const app = express();
 const port = 3000 || process.env.PORT;
@@ -91,7 +92,8 @@ app.post("/logout", (req, res) => {
 app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
-app.use("/",companyProfile);
+app.use("/", companyProfile);
+app.use("/", trending);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
