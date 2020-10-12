@@ -13,7 +13,7 @@
   </head>
   <body>
     <% if(error){ %>
-    <div class="bg-danger pl-5"><%= error %> </div>
+    <div class="bg-danger pl-5"><%= error %></div>
     <% } %>
     <!-- model for button login -->
     <div class="modal fade" id="loginModal" tabindex="-1">
@@ -88,7 +88,7 @@
           <div class="modal-body">
             <div class="tab-content" id="reg-tabContent">
               <div class="tab-pane fade show active" id="dev-reg" role="tabpanel">
-                <form action="/registerDev" method="POST">
+                <form action="/registerDev" method="POST" role="form" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="firstName">First Name:</label>
                     <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
@@ -105,11 +105,28 @@
                     <label for="password">Password:</label>
                     <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
                   </div>
+                  <div class="form-group">
+                    <label for="devPic">Upload your photo</label>
+                    <input type="file" class="form-control-file" id="devPic"  name="devPic"/>
+                  </div>
+                  <!--<div class="form-group">
+                    <label for="level">Level of study</label>
+                    <select required class="form-control" id="level" name="level">
+                      <option>Intermidiate</option>
+                      <option>Graduate</option>
+                      <option>Post-Graduate</option>
+                      <option>Not Applicable</option>
+                    </select>
+                  </div>-->
+                  <div class="form-group">
+                    <label for="institution">Name of your institution:</label>
+                    <input required name="institution" type="text" class="form-control" placeholder="Enter your institution" id="institution" />
+                  </div>
                   <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>
               </div>
               <div class="tab-pane fade" id="comp-reg" role="tabpanel">
-                <form action="/registerComp" method="POST">
+                <form action="/registerComp" method="POST" role="form" enctype="multipart/form-data">
                   <div class="form-group">
                     <label for="companyName">Company's name:</label>
                     <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />
@@ -121,6 +138,18 @@
                   <div class="form-group">
                     <label for="password">Password:</label>
                     <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
+                  </div>
+                  <div class="form-group">
+                    <label for="compPic">Upload a label for your company</label>
+                    <input type="file" class="form-control-file" id="compPic" name="compPic"/>
+                  </div>
+                  <div class="form-group">
+                    <label for="preference">Preferred position for the job:</label>
+                    <input required name="preference" type="text" class="form-control" placeholder="Enter your preferences" id="preference" />
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Enter the link to your website:</label>
+                    <input required name="website" type="text" class="form-control" placeholder="Enter the website's link" id="website" />
                   </div>
                   <button type="submit" class="btn btn-primary mt-3">Submit</button>
                 </form>

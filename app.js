@@ -11,8 +11,7 @@ const MongoDbStore = require("connect-mongo")(session); //package to store sessi
 const indexRouter = require('./routes/index');
 const developerRouter = require("./routes/developerRouter");
 const companyRouter = require("./routes/companyRouter");
-const registerDevRouter = require("./routes/registerDevRouter");
-const registerCompRouter = require("./routes/registerCompRouter");
+const registerRouter = require("./routes/registerRouter");
 const loginCompRouter = require("./routes/loginCompRouter");
 const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
@@ -82,8 +81,7 @@ app.use(express.json());
 app.use('/', indexRouter);
 app.use("/", developerRouter);
 app.use("/", companyRouter);
-app.use("/", registerDevRouter);
-app.use("/", registerCompRouter);
+app.use("/", registerRouter);
 app.use("/", loginCompRouter);
 app.use("/", loginDevRouter);
 app.post("/logout", (req, res) => {
