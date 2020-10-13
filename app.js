@@ -31,7 +31,7 @@ const serverOptions = {
 //mongoose connection setup using online cloud database
 const uri = "mongodb+srv://satya:satya@cluster0.8csuv.mongodb.net/SHIELD";
 mongoose
-  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+  .connect(uri, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => {
     console.log("Connected to database!");
   })
