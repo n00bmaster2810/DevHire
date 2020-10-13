@@ -21,10 +21,26 @@ const trending = require("./routes/trendingRouter");
 
 const app = express();
 const port = 3000 || process.env.PORT;
+const serverOptions = {
+  poolSize: 100,
+  socketOptions: {
+    socketTimeoutMS: 6000000,
+  },
+};
 
 //mongoose connection setup using online cloud database
-const uri = "mongodb+srv://satya:satya@cluster0.8csuv.mongodb.net/SHIELD?retryWrites=true&w=majority";
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: true });
+const uri = "mongodb+srv://satya:satya@cluster0.8csuv.mongodb.net/SHIELD";
+mongoose
+  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch((error) => {
+    console.log("Connection failed!");
+    console.log(error);
+  });
+
+  
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("mongo connected");
@@ -50,15 +66,11 @@ app.use(session({
 app.use(flash());
 
 //passport config for sessions and storing login data
-const passportInitComp = require("./config/passportComp");
-passportInitComp(passport);
+const passportInit = require("./config/passport");
+passportInit(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
-const passportInitDev = require("./config/passportDev");
-passportInitDev(passport);
-app.use(passport.initialize());
-app.use(passport.session());
 //Global middleware can be used accessed anywhere so as to help store the user login in session
 app.use((req, res, next) => {
   res.locals.user = req.user;

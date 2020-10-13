@@ -5,10 +5,10 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads");
+    cb(null, "public/uploads");
   },
   filename: (req, file, cb) => {
-    cb(null, file.fieldname + "-" + Data.now());
+    cb(null, file.originalname + "-" + new Date.now());
   },
 });
 const upload = multer({ storage: storage });
@@ -32,10 +32,7 @@ myPortfolioRouter.post("/myPortfolio", upload.single("image"), async (req, res) 
       institution: institution,
       resumeLink: resumeLink,
       CPI: CPI,
-      img: {
-        data: firstName.readFileSync(path.join(__dirname + "/uploads" + req.file.filename)),
-        contentType: "image/png",
-      },
+      img: req.file.path,
     }
   );
   try {
