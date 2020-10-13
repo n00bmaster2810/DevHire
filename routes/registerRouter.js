@@ -58,6 +58,7 @@ registerRouter
         email: email,
         password: hashedPassword,
         devPic: req.file.path,
+        level: req.body.level,
         institution: req.body.institution
       });
 

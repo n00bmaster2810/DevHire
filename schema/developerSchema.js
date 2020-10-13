@@ -21,6 +21,10 @@ const developer = new mongoose.Schema(
     devPic: {
       type: String
     },
+    level: {
+      type: String,
+      required:true,
+    },
     institution: {
       type: String,
       required:true,
