@@ -28,6 +28,7 @@ const upload = multer({ storage: storage , fileFilter: fileFilter});
 registerRouter
   .post("/registerDev", upload.single("devPic"), async (req, res) => {
     try {
+      
       const { firstName, lastName, email, password } = req.body;
 
       //validate request
@@ -59,6 +60,13 @@ registerRouter
         devPic: req.file.path,
         institution: req.body.institution
       });
+
+      const user = new User({
+        email: email,
+        password: hashedPassword
+      })
+
+      await user.save();
 
       await dev.save();
       res.redirect("/");
@@ -100,6 +108,13 @@ registerRouter
         preference: preference,
         website: website
       });
+
+      const user = new User({
+        email: email,
+        password: hashedPassword,
+      });
+
+      await user.save();
 
       await comp.save();
       res.redirect("/");
