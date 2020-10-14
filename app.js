@@ -21,24 +21,12 @@ const trending = require("./routes/trendingRouter");
 
 const app = express();
 const port = 3000 || process.env.PORT;
-const serverOptions = {
-  poolSize: 100,
-  socketOptions: {
-    socketTimeoutMS: 6000000,
-  },
-};
+
 
 //mongoose connection setup using online cloud database
-const uri = "mongodb+srv://satya:satya@cluster0.8csuv.mongodb.net/SHIELD";
+const uri = "mongodb+srv://satya:JNiyAc8Q5Boy7cY9@cluster0.8csuv.mongodb.net/SHIELD?retryWrites=true&w=majority";
 mongoose
-  .connect(uri, { useNewUrlParser: true, useCreateIndex: true })
-  .then(() => {
-    console.log("Connected to database!");
-  })
-  .catch((error) => {
-    console.log("Connection failed!");
-    console.log(error);
-  });
+  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, });
 
   
 const connection = mongoose.connection;

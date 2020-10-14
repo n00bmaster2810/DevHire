@@ -29,7 +29,7 @@ registerRouter
   .post("/registerDev", upload.single("devPic"), async (req, res) => {
     try {
       
-      const { firstName, lastName, email, password } = req.body;
+      const { firstName, lastName, email, password, level, institution } = req.body;
 
       //validate request
       if (!firstName || !lastName || !email || !password) {
@@ -58,14 +58,14 @@ registerRouter
         email: email,
         password: hashedPassword,
         devPic: req.file.path,
-        level: req.body.level,
-        institution: req.body.institution
+        level: level,
+        institution: institution
       });
 
       const user = new User({
         email: email,
         password: hashedPassword
-      })
+      });
 
       await user.save();
 
@@ -74,7 +74,7 @@ registerRouter
 
       console.log(dev);
     } catch (err) {
-      res.status(500);
+      return res.status(500);
     }
   })
   .post("/registerComp", upload.single("compPic"), async (req, res) => {
@@ -121,7 +121,7 @@ registerRouter
       res.redirect("/");
       console.log(comp);
     } catch (err) {
-      res.status(500);
+      return res.status(500);
     }
   });
 
