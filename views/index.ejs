@@ -41,12 +41,12 @@
               <div class="tab-pane fade show active" id="dev-login" role="tabpanel">
                 <form action="/loginDev" method="POST">
                   <div class="form-group">
-                    <label for="email">Email address of the developer:</label>
-                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
+                    <label for="dev-login-email">Email address of the developer:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="dev-login-email" />
                   </div>
-                  <div class="form-group">
+                  <div class="dev-login-form-group">
                     <label for="password">Password:</label>
-                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="password" />
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="dev-login-password" />
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -54,12 +54,12 @@
               <div class="tab-pane fade" id="comp-login" role="tabpanel">
                 <form action="/loginComp" method="POST">
                   <div class="form-group">
-                    <label for="email">Email address of the company:</label>
-                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="email" />
+                    <label for="comp-login-email">Email address of the company:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="comp-login-email" />
                   </div>
                   <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="password" />
+                    <label for="comp-login-password">Password:</label>
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="comp-login-password" />
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -101,12 +101,12 @@
                     <input required name="lastName" type="text" class="form-control" placeholder="Enter your Last Name" id="lastName" />
                   </div>
                   <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="loginEmail" />
+                    <label for="dev-signup-email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="dev-signup-email" />
                   </div>
                   <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
+                    <label for="dev-signup-password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="dev-signup-password" />
                   </div>
                   <div class="form-group">
                     <label for="devPic">Upload your photo</label>
@@ -135,12 +135,12 @@
                     <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />
                   </div>
                   <div class="form-group">
-                    <label for="email">Email address:</label>
-                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="loginEmail" />
+                    <label for="comp-signup-email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="comp-signup-email" />
                   </div>
                   <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="loginPassword" />
+                    <label for="comp-signup-password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="comp-signup-password" />
                   </div>
                   <div class="form-group">
                     <label for="compPic">Upload a label for your company</label>
