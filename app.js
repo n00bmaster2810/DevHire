@@ -25,8 +25,7 @@ const port = 3000 || process.env.PORT;
 
 //mongoose connection setup using online cloud database
 const uri = "mongodb+srv://satya:JNiyAc8Q5Boy7cY9@cluster0.8csuv.mongodb.net/SHIELD?retryWrites=true&w=majority";
-mongoose
-  .connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, });
+  mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, });
 
   
 const connection = mongoose.connection;

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Post = require("../schema/jobPostSchema");
 
 const company = new mongoose.Schema(
   {
@@ -26,6 +27,7 @@ const company = new mongoose.Schema(
       type: String,
       require: true,
     },
+    posts: [Post.schema]
   },
   { timestamps: true }
 );
