@@ -6,7 +6,6 @@ const Developer = require("../schema/developerSchema");
 const registerRouter = express.Router();
 const multer = require("multer");
 
-
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/uploads");
@@ -18,17 +17,15 @@ const storage = multer.diskStorage({
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
     cb(null, true);
-  }
-  else {
+  } else {
     cb(null, false);
   }
-}
-const upload = multer({ storage: storage , fileFilter: fileFilter});
+};
+const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 registerRouter
   .post("/registerDev", upload.single("devPic"), async (req, res) => {
     try {
-      
       const { firstName, lastName, email, password, level, institution } = req.body;
 
       //validate request
@@ -47,10 +44,16 @@ registerRouter
           return res.redirect("/");
         }
       });
+      User.exists({ email: email }, (err, result) => {
+        if (result) {
+          req.flash("error", "Email Exists");
+          return res.redirect("/");
+        }
+      });
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
-  
+
       //storing req body data in database
       const dev = new Developer({
         firstName: firstName,
@@ -59,20 +62,18 @@ registerRouter
         password: hashedPassword,
         devPic: req.file.path,
         level: level,
-        institution: institution
+        institution: institution,
       });
+      await dev.save();
 
       const user = new User({
         email: email,
-        password: hashedPassword
+        password: hashedPassword,
       });
 
       await user.save();
 
-      await dev.save();
       res.redirect("/");
-
-      console.log(dev);
     } catch (err) {
       return res.status(500);
     }
@@ -96,6 +97,12 @@ registerRouter
           return res.redirect("/");
         }
       });
+      User.exists({ email: email }, (err, result) => {
+        if (result) {
+          req.flash("error", "Email Exists");
+          return res.redirect("/");
+        }
+      });
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -107,7 +114,7 @@ registerRouter
         password: hashedPassword,
         compPic: req.file.path,
         preference: preference,
-        website: website
+        website: website,
       });
 
       const user = new User({

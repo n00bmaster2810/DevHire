@@ -17,7 +17,7 @@ myPortfolioRouter.post("/myPortfolio", upload.single("image"), async (req, res) 
 
   //validate request
   if (!firstName || !lastName || !email || !linkedIn || !school || !intitution || !resumeLink || !CPI) {
-    return res.redirect("/");
+    return res.redirect("/developers");
   }
 
 
@@ -37,9 +37,9 @@ myPortfolioRouter.post("/myPortfolio", upload.single("image"), async (req, res) 
   );
   try {
     await myPortfolio.save();
-    res.redirect("/");
+    res.redirect("/developers");
   } catch (err) {
-    res.status(500).send(err);
+    return res.status(500);
   }
   console.log(req.body);
 });
