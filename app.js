@@ -16,7 +16,6 @@ const loginCompRouter = require("./routes/loginCompRouter");
 const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
-const companyProfile = require("./routes/companyProfileRouter");
 const trending = require("./routes/trendingRouter");
 
 const app = express();
