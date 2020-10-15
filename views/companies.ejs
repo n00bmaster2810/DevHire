@@ -17,10 +17,11 @@
     <nav class="navbar navbar-inverse" style="background-color: rgb(2, 2, 20)">
       <div class="container" style="background-color: rgb(2, 2, 20)">
         <div class="navbar-header" class="container">
-          <a href="/companyProfile">
-            <img src=<%=user.compPic %> class="rounded mr-3" class="container" alt="Google" style="color: beige" height="50" /> <%= user.name %>
+          <a href="companies/<%= user._id %> ">
+            <img src="/uploads/<%=user.compPic %>" class="rounded mr-3" class="container" alt="<%= user.name %>" style="color: beige" height="50" />
           </a>
         </div>
+        <h1 class="text-white"><%= user.name %></h1>
         <form action="/logout" id="logout" method="POST">
           <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
         </form>
@@ -63,9 +64,8 @@
     </div>
 
     <!-- body of page that contains company details -->
-    <div class="container" style="display: inline-block">
-      <h1>Company Name</h1>
-      <button type="button" class="btn btn-primary" class="align-center" data-toggle="modal" data-target="#myModal">Post an offer</button>
+    <div class="container">
+      <button type="button" class="btn btn-primary align-right" data-toggle="modal" data-target="#myModal">Post an offer</button>
     </div>
 
     <!-- The Modal which opens when post an offer button gets clicked-->
@@ -121,14 +121,12 @@
     <!-- jumbotron that contains recent posts by company -->
     <div class="jumbotron" alignment="align-center" class="container">
       <h1>Recent Posts</h1>
-      <p>My recent Posts</p>
-
       <div class="container">
         <div class="row">
           <% for (var i = 0; i < user.posts.length; i++) { %> 
           <div class="col-sm-6">
             <div class="card shadow bg-white rounded" >
-              <img class="card-img-top" src="/images/jaipur.jpg" alt="Card image" />
+              <img class="card-img-top" src="/uploads/<%= user.posts[i].pic %> " alt="Card image" />
               <div class="card-body">
                 <h4 class="card-title text-bold"><%= user.posts[i].jobOffer %> </h4>
                 <p><%= user.posts[i].tags %> </p>

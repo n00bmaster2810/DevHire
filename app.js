@@ -91,7 +91,6 @@ app.post("/logout", (req, res) => {
 app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
-app.use("/", companyProfile);
 app.use("/", trending);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
