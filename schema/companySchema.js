@@ -32,4 +32,6 @@ const company = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Company", company);
+
+var comModel= mongoose.model("Company", company);
+module.exports =comModel;

@@ -9,6 +9,10 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <style>
       /*.blogg {
@@ -114,6 +118,49 @@
       </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+    <form action="/autocomplete/" method="POST">
+      <div class="form-group">
+        <label for="text">Search Company by Name</label>
+        <input type="text" class="form-control" placeholder="Enter text" id="searchName" name="fltrname">
+      </div>
+      <!-- <button type="submit" class="btn btn-primary">Search</button> -->
+    </form>
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     <!--cards-->
 
     <div class="container mt-4">
@@ -163,12 +210,40 @@
         </div>
       </div>
     </div>
+    <script>
+      $(function(){
+    $('#searchName').autocomplete({
+    source: function(req,res){
+      $.ajax({
+        url:"autocomplete/",
+        dataType:"jsonp",
+        type:"GET",
+        data:req,
+        success: function(data){
+          res(data)
+        },
+        error: function(err){
+          console.log(err.status);
+        }
+      });
+    },
+    minLength:1,
+    select: function(event,ui){
+      if(ui.item){
+        $('#searchName').val(ui.item.label);
+      }
+    }
+    });
+      });
+    </script>
 
-    <script
+
+
+    <!-- <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
-    ></script>
+    ></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
