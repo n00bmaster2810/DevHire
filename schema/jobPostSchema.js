@@ -13,6 +13,9 @@ const jobPost = new mongoose.Schema(
 		tags: {
 			type: String,
 			require: true
+		},
+		pic: {
+			type: String
 		}
 	  
   },

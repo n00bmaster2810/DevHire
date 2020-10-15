@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 app.use(express.urlencoded());
 app.use(express.json());
 
@@ -91,7 +91,6 @@ app.post("/logout", (req, res) => {
 app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
-app.use("/", companyProfile);
 app.use("/", trending);
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
