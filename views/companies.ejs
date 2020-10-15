@@ -118,6 +118,56 @@
       </div>
     </div>
 
+     <!--The Modal which opens when post an offer button gets clicked-->
+    <div class="modal" id="editModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Job Details</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form action="" method="POST" role="form" enctype="multipart/form-data" id="editPost">
+              <div class="form-group">
+                <label for="editJobOffer">Job Offer</label>
+                <input type="text" class="form-control" placeholder="Enter Job Offer" id="editJobOffer" name="editJobOffer" value="" required />
+              </div>
+              <div class="form-group">
+                <label for="editDescription">Description </label>
+                <textarea
+                  rows="12"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Brief Description of Job"
+                  id="editDescription"
+                  name="editDescription"
+                  required
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label for="editTags">Tags </label>
+                <input type="text" class="form-control" placeholder="CTC Offered" id="editTags" name="editTags" required />
+              </div>
+              <div class="form-group">
+                    <label for="editPostPic">Upload a label for your company</label>
+                    <input type="file" class="form-control-file" id="editPostPic" name="editPostPic" />
+              </div>
+
+              <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+      </div>
+
     <!-- jumbotron that contains recent posts by company -->
     <div class="jumbotron" alignment="align-center" class="container">
       <h1>Recent Posts</h1>
@@ -133,6 +183,9 @@
                 <br />
                 <br />
                 <div class="card-text"><%= user.posts[i].description %> </div>
+                <br>
+                <button data-post="<%= JSON.stringify(user.posts[i]) %>" type="button" class=" edit-post btn btn-success align-right" data-toggle="modal" data-target="#editModal">Edit the post</button>
+                <button type="button" class="del-post btn btn-danger ml-auto">Delete the post</button>
               </div>
             </div>
           </div>
@@ -155,5 +208,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script src="/javascript/companies.js"></script>
   </body>
 </html>

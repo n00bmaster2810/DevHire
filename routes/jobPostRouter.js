@@ -25,33 +25,62 @@ const fileFilter = (req, file, cb) => {
 };
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-jobPostRouter.post("/jobPost",upload.single("postPic"),  async (req, res) => {
+jobPostRouter.post("/jobPost", upload.single("postPic"), async (req, res) => {
   try {
     console.log(req.file);
-      const { jobOffer, description, tags } = req.body;
+    const { jobOffer, description, tags } = req.body;
 
-      //validate request
-      if (!jobOffer || !description || !tags) {
-        req.flash("error", "All fields are mandatory");
-        return res.redirect("/companies");
-      }
+    //validate request
+    if (!jobOffer || !description || !tags) {
+      req.flash("error", "All fields are mandatory");
+      return res.redirect("/companies");
+    }
 
-      //storing req body data in database
-      const jobPost = new JobPost({
-        jobOffer: jobOffer,
-        description: description,
-        tags: tags,
-        pic: req.file.filename,
-      });
+    //storing req body data in database
+    const jobPost = new JobPost({
+      jobOffer: jobOffer,
+      description: description,
+      tags: tags,
+      pic: req.file.filename,
+    });
+    await jobPost.save();
+    const comp = await Company.findOne({ email: req.user.email });
+    if (comp) {
+      comp.posts.push(jobPost);
+      await comp.save();
+      res.redirect("/companies");
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+})
+  .post("/editPost/:id", upload.single("editPostPic"), async (req, res) => {
+    try {
       const comp = await Company.findOne({ email: req.user.email });
-      if (comp) {
-        comp.posts.push(jobPost);
+      let post, index;
+      for (let i = 0; i < comp.posts.length; i++){
+        if (comp.posts[i]._id == req.params.id) {
+          post = comp.posts[i];
+          index = i;
+          break;
+        }
+      }
+      if (post) {
+        let editPost = comp.posts[index];
+        editPost.jobOffer = req.body.editJobOffer;
+        editPost.description = req.body.editDescription;
+        editPost.tags = req.body.editTags;
+        editPost.pic = req.file.filename;
         await comp.save();
         res.redirect("/companies");
       }
-    } catch (err) {
-      res.status(500).send(err);
+      else {
+        return res.status(404).send();
+      }
     }
-});
+    catch {
+      return res.status(500).send();
+    }
+  });
 
 module.exports = jobPostRouter;
