@@ -14,10 +14,10 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-light bg-light static-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/companies">
           <h3>
-            <img src="img.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
-             hi! company
+            <img src="/uploads/<%= user.compPic %> " width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
+             <%= user.name %>
           </h3>
         </a>
           <form action="/logout" id="logout" method="POST">
@@ -75,7 +75,7 @@
             <p>Lorem ipsum dolor..</p>
           </div>
           <div class="col-sm-4">
-            <img alt="profile photo of company" src="jaipur.jpg" />
+            <img alt="profile photo of company" src="/uploads/<%= user.compPic %> " />
           </div>
         </div>
       </div>
@@ -84,40 +84,21 @@
     <div class="container">
       <h1>Recent Posts</h1>
       <div class="row">
+        <% for (var i = 0; i < user.posts.length; i++) { %>
         <div class="col-sm-4 d-flex justify-content-between">
           <div class="card" style="width: 400px">
             <div class="card-body d-flex flex-column">
-              <img class="card-img-top" src="img_avatar6.png" alt="Card image" style="width: 100%" />
-              <h4 class="card-title align-self-center">Post 1</h4>
-              <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="#" class="align-self-center">Go To Post</a>
-            </div>
-            
-          </div>
-        </div>
-        <div class="col-sm-4 d-flex justify-content-between">
-          <div class="card" style="width: 400px">
-            <div class="card-body d-flex flex-column">
-              <img class="card-img-top" src="img_avatar6.png" alt="Card image" style="width: 100%" />
-              <h4 class="card-title align-self-center">Post 2</h4>
-              <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
+              <img class="card-img-top" src="/uploads/<%= user.posts[i].pic %> " alt="Card image" style="width: 100%" />
+              <h4 class="card-title align-self-center"><%= user.posts[i].jobOffer %> </h4>
+                <p class="card-subtitle mb-2 text-muted justify-content-end">posted on <%= user.posts[i].createdAt.toDateString()  %></p>
+              <p class="card-text"><%= user.posts[i].tags %></p>
+              <p>Applied
+                <span class="badge badge-primary badge-pill"><%= user.posts[i].applied %></span></p>
               <a href="#" class="align-self-center">Go To Post</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-4 d-flex justify-content-between">
-          <div class="card" style="width: 400px">
-            <div class="card-body d-flex flex-column">
-              <img class="card-img-top" src="img_avatar6.png" alt="Card image" style="width: 100%" />
-              <h4 class="card-title align-self-center">Post 3</h4>
-                <p class="card-subtitle mb-2 text-muted justify-content-end">posted on 20/11</p>
-              <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="#">Applied
-                <span class="badge badge-primary badge-pill">2</span></p>
-              <a href="#" class="align-self-center">Go To Post</a>
-            </div>
-          </div>
-        </div>
+      <% } %> 
       </div>
     </div>
     <!--metrics-->

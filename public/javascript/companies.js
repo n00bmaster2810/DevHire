@@ -15,6 +15,16 @@ postBtn.addEventListener("click", (e) => {
   });
 });
 
-//$("#editJobOffer").val(post.jobOffer);
-//let editJobOffer = document.getElementById("editJobOffer");
-//editJobOffer.setAttribute("value", post.jobOffer);
+let deletePostBtn = document.querySelector(".del-post");
+
+deletePostBtn.addEventListener("click", (e) => {
+  post = JSON.parse(deletePostBtn.dataset.post);
+  console.log(post);
+  let path = "/companies/deletePost/" + post._id;
+  //$("#deletePost").click(function () {
+    //$("#deletePost").attr("href", path);
+  //});
+  $("#deletePost").click(function () {
+    window.location = path;
+  });
+});
