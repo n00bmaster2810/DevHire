@@ -1,8 +1,10 @@
+
 const express = require("express");
 const Company = require("../schema/companySchema");
 const JobPost = require("../schema/jobPostSchema");
 const jobPostRouter = express.Router();
 const multer = require("multer");
+// const morgan=require('morgan');
 
 
 const storage = multer.diskStorage({
@@ -82,5 +84,28 @@ jobPostRouter.post("/jobPost", upload.single("postPic"), async (req, res) => {
       return res.status(500).send();
     }
   });
+
+
+// deleting a post
+  jobPostRouter.delete('/article/:id',function(req,res){
+let query={ _id:req.params.id  }
+
+jobPost.remove(query,function(err){
+  if(err){
+    console.log(err);
+  }
+  res.send('Success');
+});
+  });
+
+
+
+
+
+
+
+
+ 
+
 
 module.exports = jobPostRouter;

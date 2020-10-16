@@ -7,6 +7,10 @@ const session = require("express-session"); //package for session
 const flash = require("connect-flash"); //package for displaying messages on the front end
 const MongoDbStore = require("connect-mongo")(session); //package to store session in our mongo database
 
+
+
+
+
 // router imports
 const indexRouter = require('./routes/index');
 const developerRouter = require("./routes/developerRouter");
@@ -63,6 +67,12 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
+
+
+
+
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -91,6 +101,14 @@ app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
 app.use("/", trending);
+
+
+
+
+
+
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
