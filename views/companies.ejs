@@ -10,7 +10,6 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
 
   <body>
@@ -77,8 +76,6 @@
             <h4 class="modal-title">Job Details</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
-          <!-- Modal body -->
           <div class="modal-body">
             <form action="/jobPost" method="POST" role="form" enctype="multipart/form-data">
               <div class="form-group">
@@ -109,8 +106,6 @@
               <button type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
-
-          <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
@@ -118,17 +113,14 @@
       </div>
     </div>
 
-    <!--The Modal which opens when post an offer button gets clicked-->
+    <!--The Modal which opens when editPost button gets clicked-->
     <div class="modal" id="editModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Job Details</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
-          <!-- Modal body -->
           <div class="modal-body">
             <form action="" method="POST" role="form" enctype="multipart/form-data" id="editPost">
               <div class="form-group">
@@ -159,8 +151,6 @@
               <button type="submit" id="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
-
-          <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
@@ -168,22 +158,18 @@
       </div>
     </div>
 
-    <!-- The Modal -->
+   <!-- The Modal which opens when delete post button gets clicked-->
     <div class="modal" id="deleteModal">
       <div class="modal-dialog">
         <div class="modal-content">
-          <!-- Modal Header -->
           <div class="modal-header">
             <h4 class="modal-title">Do you want to delete this post ?</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-
-          <!-- Modal body-->
           <div class="modal-body">
             Oops by continuing to delete this post you mayh loose all it's content and its data. <br />
             To proceed with it click on the delete cutton or you can cancel it too.
           </div>
-          <!-- Modal footer -->
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal" id="deletePost">Delete</button>
             <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
@@ -191,8 +177,7 @@
         </div>
       </div>
     </div>
-
-    <!-- jumbotron that contains recent posts by company -->
+    <!--recent posts fetched from database-->
     <div class="jumbotron" alignment="align-center" class="container">
       <h1>Recent Posts</h1>
       <div class="container">

@@ -3,6 +3,20 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+.jumbotron{
+  background: url("/images/home.jpg") center no-repeat ;
+  background-color: #0000004d;
+  background-size: cover;
+}
+
+.btn:hover{
+ box-shadow: 2px 2px #0000007e;
+}
 a {
-  color: #45c06e;
+  color: dimgrey;
+}
+
+a:hover{
+  text-decoration: none;
+  font-size: large;
 }
