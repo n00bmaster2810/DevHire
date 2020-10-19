@@ -9,10 +9,10 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <style>
       /*.blogg {
@@ -69,13 +69,18 @@
               </div>
             </li>
           </ul>
-          <form action="/logout" id="logout" method="POST">
+          <form action="/trending" method="GET" class="form-inline ml-auto mr-auto">
+            <div class="form-group">
+              <input type="text" class="form-control mr-3" placeholder="Search companies" id="searchName" name="fltrname" class="form-control" />
+              <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+          </form>
+          <form action="/logout" id="logout" method="POST" class="ml-auto">
             <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
           </form>
         </div>
       </div>
     </nav>
-
     <!--carousel-->
     <div class="container-fluid">
       <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -117,50 +122,6 @@
         </a>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-    <form action="/autocomplete/" method="POST">
-      <div class="form-group">
-        <label for="text">Search Company by Name</label>
-        <input type="text" class="form-control" placeholder="Enter text" id="searchName" name="fltrname">
-      </div>
-      <!-- <button type="submit" class="btn btn-primary">Search</button> -->
-    </form>
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
     <!--cards-->
 
     <div class="container mt-4">
@@ -211,33 +172,31 @@
       </div>
     </div>
     <script>
-      $(function(){
-    $('#searchName').autocomplete({
-    source: function(req,res){
-      $.ajax({
-        url:"autocomplete/",
-        dataType:"jsonp",
-        type:"GET",
-        data:req,
-        success: function(data){
-          res(data)
-        },
-        error: function(err){
-          console.log(err.status);
-        }
-      });
-    },
-    minLength:1,
-    select: function(event,ui){
-      if(ui.item){
-        $('#searchName').val(ui.item.label);
-      }
-    }
-    });
+      $(function () {
+        $("#searchName").autocomplete({
+          source: function (req, res) {
+            $.ajax({
+              url: "autocomplete/",
+              dataType: "jsonp",
+              type: "GET",
+              data: req,
+              success: function (data) {
+                res(data);
+              },
+              error: function (err) {
+                console.log(err.status);
+              },
+            });
+          },
+          minLength: 1,
+          select: function (event, ui) {
+            if (ui.item) {
+              $("#searchName").val(ui.item.label);
+            }
+          },
+        });
       });
     </script>
-
-
 
     <!-- <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
