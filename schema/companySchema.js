@@ -27,7 +27,17 @@ const company = new mongoose.Schema(
       type: String,
       require: true,
     },
-    posts: [Post.schema]
+    posts: [Post.schema],
+    headquarter: {
+      type: String,
+    },
+    subscribers: {
+      type: Number,
+      default: 0
+    },
+    coverPic: {
+      type: String,
+    },   
   },
   { timestamps: true }
 );
