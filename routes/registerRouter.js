@@ -5,6 +5,7 @@ const Company = require("../schema/companySchema");
 const Developer = require("../schema/developerSchema");
 const registerRouter = express.Router();
 const multer = require("multer");
+const { db } = require("../schema/companySchema");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -18,7 +19,7 @@ const fileFilter = (req, file, cb) => {
   if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
     cb(null, true);
   } else {
-    cb(null, false);
+    return cb(null, false);
   }
 };
 const upload = multer({ storage: storage, fileFilter: fileFilter });
@@ -51,6 +52,9 @@ registerRouter
         }
       });
 
+      let path = "";
+      if (req.file) path = req.file.path;
+
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -60,7 +64,7 @@ registerRouter
         lastName: lastName,
         email: email,
         password: hashedPassword,
-        devPic: req.file.path,
+        devPic: path,
         level: level,
         institution: institution,
       });
@@ -106,13 +110,15 @@ registerRouter
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
+      let path = "";
+      if (req.file) path = req.file.path;
 
       //storing req body data in database
       const comp = new Company({
         name: companyName,
         email: email,
         password: hashedPassword,
-        compPic: req.file.path,
+        compPic: path,
         preference: preference,
         website: website,
       });

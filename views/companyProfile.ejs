@@ -10,20 +10,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    
     <!--Navbar-->
     <nav class="navbar navbar-expand-md navbar-light bg-light static-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/companies">
           <h3>
             <img src="/uploads/<%= user.compPic %> " width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
-             <%= user.name %>
+            <%= user.name %>
           </h3>
         </a>
-          <form action="/logout" id="logout" method="POST">
-            <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
-          </form>
-        </div>
+        <form action="/logout" id="logout" method="POST">
+          <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
+        </form>
       </div>
     </nav>
 
@@ -32,12 +30,11 @@
       <div class="row">
         <div class="col sm-10">
           <div class="card">
-            <img class="card-img-top"  style="width: 1109.28px; height: 215.56px; top: -17.5596px; left: 0px;"  alt="cover photo">
+            <img class="card-img-top"src="/uploads/<%= user.compPic %> " style="width: 1109.28px; height: 215.56px; top: -17.5596px; left: 0px" alt="cover photo" />
             <div class="card-body">
-              <h4 class="card-title">Company name</h4>
-              <h5 class="card-subtitle">Company profile</h5>
+              <h4 class="card-title"><%= user.name %></h4>
               <a class="btn btn-primary btn-sm my-2 auto" href="#">Jobs</a>
-              <button  type="button" class="btn btn-primary btn-sm data-toggle my-2" aria-pressed="false" autocomplete="off">Follow</button>
+              <button type="button" class="btn btn-primary btn-sm data-toggle my-2" aria-pressed="false" autocomplete="off">Follow</button>
               <p class="text-muted align-right">Subscribers</p>
             </div>
           </div>
@@ -45,92 +42,31 @@
       </div>
     </div>
 
-
     <!--about the company-->
     <div class="container">
       <dl class="basic-info">
-       <div class="basic-info-item d-flex ">
-          <dt class="basic-info-item__term">
-            Website
-          </dt>
-          <dd class="mx-5">
-             <a class="external-link about-us__link" href="#" data-tracking-control-name="about_website" target="_blank" rel="noopener" data-tracking-will-navigate="">
-              http://www.goldmansachs.com
-              <icon class="external-link__icon about-us__icon lazy-loaded" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" width="16" height="16" viewBox="0 0 16 16" focusable="false" class="lazy-loaded">
-              <path style="fill:currentColor" d="M12,10v3a1,1,0,0,1-1,1H3a1,1,0,0,1-1-1V5A1,1,0,0,1,3,4H6V6H4v6h6V10h2Zm1-8H8V4h2.67L6,8.67,7.33,10,12,5.33V8h2V3A1,1,0,0,0,13,2Z"></path>
-              </svg></icon>
-             </a>
-          </dd>
-        </div>
-      
-                
-        <div class="basic-info-item d-flex my-2">
-          <dt class="basic-info-item__term">
-            Industries
-          </dt>
-          <dd class="mx-5">
-            Financial Services
-          </dd>
-        </div>
-      
-                
-        <div class="basic-info-item d-flex my-2">
-          <dt class="basic-info-item__term">
-            Company size
-          </dt>
-           <dd class="mx-5">
-            10,001+ employees
-           </dd>
-        </div>
-      
-                
-        <div class="basic-info-item d-flex">
-          <dt class="basic-info-item__term">
-            Headquarters
-          </dt>
-          <dd class="mx-5">
-                New York, New York
-          </dd>
-        </div>
-      
-                
-        <div class="basic-info-item d-flex">
-          <dt class="basic-info-item__term">
-            Type
-          </dt>
-          <dd class="mx-5">
-            Public Company
-          </dd>
-        </div>
-      
-      </dl>
-      </div>
-    
-
-        <!--Main body-->
-    <div class="jumbotron">
-      <div class="container">
         <div class="row">
-          <div class="col-sm-8">
-            <h1>My Details</h1>
-
-            <ul class="list-group">
-              <li class="list-group-item">First item</li>
-              <li class="list-group-item">Second item</li>
-              <li class="list-group-item">First item</li>
-              <li class="list-group-item">Second item</li>
-              <li class="list-group-item">Third item</li>
-            </ul>
-
-            <p>Lorem ipsum dolor..</p>
+          <div class="col-sm-2">
+            <dt>Website</dt>
           </div>
-          <div class="col-sm-4">
-            <img alt="profile photo of company" src="/uploads/<%= user.compPic %> " width="100%" height="100%"/>
+          <div class="col-sm-5">
+            <dd>
+              <a class="external-link about-us__link" href="<%= user.website %>" data-tracking-control-name="about_website" target="_blank"> http://www.<%= user.website %> </a>
+            </dd>
           </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-sm-2">
+            <dt>Headquarters</dt>
+          </div>
+          <div class="col-sm-5">
+            <dd>New York, New York</dd>
+          </div>
+        </div>
+      </dl>
     </div>
-     <!--recent post -->
+
+    <!--recent post -->
     <div class="container">
       <h1>Recent Posts</h1>
       <div class="row">
@@ -139,21 +75,20 @@
           <div class="card" style="width: 400px">
             <div class="card-body d-flex flex-column">
               <img class="card-img-top" src="/uploads/<%= user.posts[i].pic %> " alt="Card image" style="width: 100%" />
-              <h4 class="card-title align-self-center"><%= user.posts[i].jobOffer %> </h4>
-                <p class="card-subtitle mb-2 text-muted justify-content-end">posted on <%= user.posts[i].createdAt.toDateString()  %></p>
+              <h4 class="card-title align-self-center"><%= user.posts[i].jobOffer %></h4>
+              <p class="card-subtitle mb-2 text-muted justify-content-end">posted on <%= user.posts[i].createdAt.toDateString() %></p>
               <p class="card-text"><%= user.posts[i].tags %></p>
-              <p>Applied
-                <span class="badge badge-primary badge-pill"><%= user.posts[i].applied %></span></p>
+              <p>Applied <span class="badge badge-primary badge-pill"><%= user.posts[i].applied %></span></p>
               <a href="#" class="align-self-center">Go To Post</a>
             </div>
           </div>
         </div>
-      <% } %> 
+        <% } %>
       </div>
     </div>
     <!--metrics-->
     <div class="container mt-4">
-       <h1>metrics</h1>
+      <h1>metrics</h1>
     </div>
   </body>
 </html>
