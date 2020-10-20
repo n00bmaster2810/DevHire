@@ -31,7 +31,7 @@ const init = (passport) => {
 	});
 	passport.deserializeUser((id, done) => {
 		User.findById(id, (err, user) => {
-			done(err, user)
+			done(err, user);
 		});
 	});
 
