@@ -65,23 +65,30 @@
         </div>
       </div>
     </nav>
-
+    <% if(companies.length > 0){%>
     <div class="container">
       <div class="row">
-        <% companies.forEach((company) => { %> 
+        <div col-sm-12>
+          <h2>Search results:</h2>
+        </div>
+      </div>
+      <hr class="bg-dark" />
+      <div class="row">
+        <% companies.forEach((company) => { %>
         <div class="col-sm-4">
           <div class="card card-body">
             <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-            <h3><%= company.name %> </h3>
+            <h3><%= company.name %></h3>
 
-            <p><%= company.preference %> </p>
+            <p><%= company.preference %></p>
             <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers %></span></p>
             <button type="button" class="btn btn-success">Subscribe</button>
           </div>
         </div>
-      <% }); %> 
+        <% }); %>
       </div>
     </div>
+    <% }%>
 
     <div class="container text-center my-3">
       <h1 class="font-weight-light">For WebD</h1>
@@ -168,179 +175,6 @@
     </div>
     <br />
     <br />
-
-    <div class="container text-center my-3">
-      <h1 class="font-weight-light">For Data Structures</h1>
-      <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-          <div class="carousel-inner w-100" role="listbox">
-            <div class="carousel-item active">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <br />
-    <br />
-
-    <div class="container text-center my-3">
-      <h1 class="font-weight-light">For Android Development</h1>
-      <div class="row mx-auto my-auto">
-        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-          <div class="carousel-inner w-100" role="listbox">
-            <div class="carousel-item active">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="col-md-4">
-                <div class="card card-body">
-                  <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
-                  <h3>Lorem, ipsum.</h3>
-
-                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni.</p>
-                  <button type="button" class="btn btn-success">Success</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-    <br />
-    <br />
-
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
