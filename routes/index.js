@@ -4,6 +4,10 @@ const router = express.Router();
 const guest = require("../middleware/guest");
 const comModel=require('../schema/companySchema');
 const company=comModel.find({});
+
+
+
+
 /* GET home page. */
 router.get('/',guest, function(req, res, next) {
   res.render('index');
@@ -15,33 +19,31 @@ router.get('/',guest, function(req, res, next) {
 
 
 // autocomplete search
-router.get('/autocomplete/',function(req,res,next){
-  var regex=new RegExp(req.query["term",'i']);
-  
-  var companyFilter=comModel.find({name:regex},{'name':1}).sort({"updated_at":-1}).sort({"created_at":-1}).limit(20);
-  companyFilter.exec(function(err,data){
-  
-    var result=[];
-    if(!err){
-      if(data && data.length && data.length >0){
-  
-        data.forEach(user => {
-          let obj={
-            id:user._id,
-            label:user.name
-  
-          };
-          result.push(obj);
-        });
-  
-  
-      }
-      console.log(result);
-      res.jsonp(result);
-    }
-  
-  });
-  
+router.get('/search/',function(req,res,next){
+  var q=req.query.q;
+
+comModel.find({
+
+  name:{
+    $regex:new RegExp(q)
+  }
+},{ 
+_id:0,
+__v:0
+
+
+}, function(err,data){
+res.json(data);
+
+}
+
+).limit(10);
+
+
+
+
+
+
   });
   
   
