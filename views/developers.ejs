@@ -18,7 +18,7 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="/developers/profile">
           <h3>
-            <img src="img.jpg" width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
+            <img src="/uploads/<%= dev.devPic %> " width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
             DevHire
           </h3>
         </a>
@@ -111,30 +111,24 @@
 
     <div class="container mt-4">
       <div class="row">
-        <div class="col-sm-1"></div>
         <div class="col-sm-6">
-          <div class="blog-post" id="blogg">
-            <div class="blog-post_img">
-              <img src="#" />
-
-              <div class="blog-post_info mb-3">
-                <h3 class="blog-post_title" id="compName"><a href="#">gs</a></h3>
-                <p class="blog-post_text">Notification for job opening for sde test</p>
-                <a href="apply.html" class="blog-post_cta">Apply here</a>
-              </div>
-              <div class="blog-post_info mb-3">
-                <h3 class="blog-post_title" id="compName"><a href="#">cisco</a></h3>
-                <p class="blog-post_text">Notification for job opening for sde test</p>
-                <a href="apply.html" class="blog-post_cta">Apply here</a>
-              </div>
-              <div class="blog-post_info mb-3">
-                <h3 class="blog-post_title" id="compName"><a href="#">uber</a></h3>
-                <p class="blog-post_text">Notification for job opening for sde test</p>
-                <a href="apply.html" class="blog-post_cta">Apply here</a>
+          <% subs.forEach(sub => { %>
+          <h3><%= sub.name %></h3>
+          <div class="row">
+            <% sub.posts.forEach(post => { %>
+            <div class="card col-sm-6 p-1">
+              <img class="card-img-top" src="/uploads/<%= post.pic %>" alt="Card image cap" />
+              <div class="card-body">
+                <h5 class="card-title"><%= post.jobOffer %> </h5>
+                <p class="card-text"><%= post.tags %></p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
+            <% }); %>
           </div>
+          <% }); %>
         </div>
+        <div class="col-sm-1"></div>
         <div class="col-sm-5">
           <div class="card">
             <div class="card-header">Recent openings</div>
