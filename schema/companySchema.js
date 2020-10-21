@@ -31,10 +31,9 @@ const company = new mongoose.Schema(
     headquarter: {
       type: String,
     },
-    subscribers: {
-      type: Number,
-      default: 0
-    },
+    subscribers:  [{
+      type: String, 
+    }],
     coverPic: {
       type: String,
     },   

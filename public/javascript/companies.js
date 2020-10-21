@@ -1,30 +1,51 @@
-let postBtn = document.querySelector(".edit-post");
+let postBtn = document.querySelectorAll(".edit-post");
 
 let post;
 
-postBtn.addEventListener("click", (e) => {
-  post = JSON.parse(postBtn.dataset.post);
+postBtn.forEach((btn) => {
+  let post = JSON.parse(postBtn.dataset.post);
   console.log(post);
   $("#editJobOffer").val(post.jobOffer);
   $("#editDescription").val(post.description);
   $("#editTags").val(post.tags);
   let path = "/editPost/" + post._id;
   $("#submit").click(function () {
-	  $("#editPost").attr("action", path);
-	  $("#editPost").attr("method", "POST")
+    $("#editPost").attr("action", path);
+    $("#editPost").attr("method", "POST");
   });
 });
 
-let deletePostBtn = document.querySelector(".del-post");
+//postBtn.addEventListener("click", (e) => {
+//  post = JSON.parse(postBtn.dataset.post);
+//  console.log(post);
+//  $("#editJobOffer").val(post.jobOffer);
+//  $("#editDescription").val(post.description);
+//  $("#editTags").val(post.tags);
+//  let path = "/editPost/" + post._id;
+//  $("#submit").click(function () {
+//	  $("#editPost").attr("action", path);
+//    $("#editPost").attr("method", "POST");
+//  });
+//});
 
-deletePostBtn.addEventListener("click", (e) => {
-  post = JSON.parse(deletePostBtn.dataset.post);
-  console.log(post);
-  let path = "/companies/deletePost/" + post._id;
-  //$("#deletePost").click(function () {
-    //$("#deletePost").attr("href", path);
-  //});
-  $("#deletePost").click(function () {
-    window.location = path;
+let deletePostBtn = document.querySelectorAll(".del-post");
+
+deletePostBtn.forEach(btn => {
+  $(btn).click(() => {
+    post = JSON.parse(deletePostBtn.dataset.post);
+    console.log(post);
+    let path = "/companies/deletePost/" + post._id;
+    $("#deletePost").click(function () {
+      window.location = path;
+    });
   });
 });
+
+//deletePostBtn.addEventListener("click", (e) => {
+//  post = JSON.parse(deletePostBtn.dataset.post);
+//  console.log(post);
+//  let path = "/companies/deletePost/" + post._id;
+//  $("#deletePost").click(function () {
+//    window.location = path;
+//  });
+//});

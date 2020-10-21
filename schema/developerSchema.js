@@ -28,7 +28,10 @@ const developer = new mongoose.Schema(
     institution: {
       type: String,
       required:true,
-    }
+    },
+    subscribed: [{
+      type: String, 
+    }]
   },
   { timestamps: true }
 );

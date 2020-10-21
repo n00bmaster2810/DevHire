@@ -10,6 +10,8 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
+    <link rel="stylesheet" href="../node_modules/noty/lib/themes/mint.css">
   </head>
 
   <body>
@@ -24,10 +26,10 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mx-1">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="/developers">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/trending">Company <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="#">Company <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <div class="d-flex flex-row">
@@ -77,12 +79,12 @@
         <% companies.forEach((company) => { %>
         <div class="col-sm-4">
           <div class="card card-body">
-            <img class="img-fluid" src="./SHIELD/public/images/jaipur.jpg" />
+            <img class="img-fluid" src="/uploads/<%= company.compPic %> " />
             <h3><%= company.name %></h3>
 
             <p><%= company.preference %></p>
-            <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers %></span></p>
-            <button type="button" class="btn btn-success">Subscribe</button>
+            <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers.length %></span></p>
+            <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-success">Subscribe</button>
           </div>
         </div>
         <% }); %>
@@ -190,6 +192,7 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script src="/javascript/show.js"></script>
     <script>
       $("#recipeCarousel").carousel({
         interval: 10000,
