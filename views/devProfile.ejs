@@ -9,10 +9,11 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
 
   <body>
@@ -30,41 +31,8 @@
         </div>
       </div>
     </nav>
-    <!--modal-->
-    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header text-center">
-            <h4 class="modal-title w-100 font-weight-bold">Sign up</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body mx-3">
-            <div class="md-form mb-5">
-              <i class="fas fa-user prefix grey-text"></i>
-              <input type="text" id="orangeForm-name" class="form-control validate" />
-              <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
-            </div>
-            <div class="md-form mb-5">
-              <i class="fas fa-envelope prefix grey-text"></i>
-              <input type="email" id="orangeForm-email" class="form-control validate" />
-              <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
-            </div>
-
-            <div class="md-form mb-4">
-              <i class="fas fa-lock prefix grey-text"></i>
-              <input type="password" id="orangeForm-pass" class="form-control validate" />
-              <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
-            </div>
-          </div>
-          <div class="modal-footer d-flex justify-content-center">
-            <button class="btn btn-deep-orange">Sign up</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    
+    <!--intro-->
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -73,7 +41,7 @@
           <img
             src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSN5jUJKPKak2gtSdLwDscBINML-e6IKLCyOg&usqp=CAU"
             class="rounded-circle"
-            alt="Cinque Terre"
+            alt="profile photo"
             width="100%"
           />
         </div>
@@ -84,17 +52,26 @@
 
           <div class="row">
             <div class="col-sm-4">
-              <h1>Name Khandelwal</h1>
+              <h3>Name Khandelwal</h3>
             </div>
             <div class="col-sm-8">
-              <button type="button" class="btn btn-primary">Edit Profile</button>
-              <button type="button" class="btn btn-info">Info</button>
+              <div class="text-center">
+                <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#editProfile">
+                  Edit profile</a>
+              </div>  
             </div>
           </div>
-
-          <h4>New York, YashianLand</h4>
+          <div class="row">
+            <div class="col">
+          <h4 class="text-muted">New York</h4>
           <button data-toggle="collapse" data-target="#demo" class="btn btn-primary">Collapsible</button>
-
+        </div>
+            <div class="col"></div>
+            <div class="col">
+              <i class="fa fa-github-square fa-3x"></i>
+              </div>
+            </div>
+          </div>
           <div id="demo" class="collapse">Lorem ipsum dolor text....</div>
         </div>
       </div>
@@ -117,5 +94,154 @@
         </div>
       </div>
     </div>
+    <hr>
+    
+    <!--modal body for edit profile-->
+    <div class="modal fade" id="editProfile" tabindex="-1" role="dialog" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center">
+          <h4 class="modal-title w-100 font-weight-bold">Edit profile</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body mx-3">
+          <div class="md-form mb-5">
+             <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+          </div>
+          <input type="text" id="orangeForm-name" class="form-control validate">
+          <div class="md-form mb-5">
+            <label data-error="wrong" data-success="right" for="orangeForm-email">Your email</label>
+          </div>
+            <input type="email" id="orangeForm-email" class="form-control validate">
+            
+  
+          <div class="md-form mb-4">
+            <label data-error="wrong" data-success="right" for="orangeForm-pass">Your password</label>
+          </div>
+            <input type="password" id="orangeForm-pass" class="form-control validate">
+            
+  
+        </div>
+        <div class="modal-footer d-flex justify-content-center">
+          <button class="btn btn-deep-orange">Finish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- The scrollable area -->
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <!-- The navbar - The <a> elements are used to jump to a section in the scrollable area -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="row d-flex justify-content-center">
+      
+      <div class="col sm-3 ">
+        <a href="#section1" class="btn btn-primary">section1</a>
+      </div>
+      <div class="col sm-3 ">
+        <a href="#section2" class="btn btn-primary">section2</a>
+      </div>
+      <div class="col sm-3 ">
+        <a href="#section3" class="btn btn-primary">section3</a>
+      </div>
+      </div>
+    
+  </nav>  
+  
+ 
+  
+  <!-- Section 1 -->
+
+  <div class="jumbotron" id="section1">
+    <h1 class="text-center">Experience  <button class="btn btn-primary" data-toggle="modal" data-target="#editexp"><span><i class="fa fa-edit"></i></span></button></h1>
+    
+    <p><b>Following is the my work Experience</b></p>
+    <div class="container-fluid"  id="job">
+        <div class="media mx-4 my-4">
+           <img class="mr-3" src="..." alt="image" style="border: 1px crimson;"> 
+            <div class="media-body mx-4">
+             <h5 class="">Place 1</h5>
+             <h6 class="sub-title text-muted">Time span</h6>
+               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+        </div> 
+    </div>
+    <hr>
+    <div class="container-fluid" style="border: 2px rgb(11, 165, 88) ;">
+      <div class="media mx-4 my-4">
+         <img class="mr-3" src="..." alt="image">
+          <div class="media-body mx-4">
+           <h5 class="">Place 2</h5>
+           <h6 class="sub-title text-muted">Time span</h6>
+             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+      </div> 
+  </div>
+  </div>
+
+
+  <!-- Modal for experience edit-->
+<div class="modal fade" id="editexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Edit Job Experience</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="dropdown">
+          <span class="align-center"> 
+          <button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown"></span>
+            Select Job
+          </button>
+          <div class="dropdown-menu">
+            <p class="dropdown-item" >Job 1</p>
+            <p class="dropdown-item" >Job 2</p>
+            <p class="dropdown-item" >add Job</p>                        <!--to add another job experince-->
+          </div>
+        </div>
+
+        <form>
+          <div class="form-group">
+            <label for="placeOfIntern" class="col-form-label">Place</label>
+            <input type="text" class="form-control" id="placeOfIntern">
+          </div>
+          <div class="form-group">
+            <label for="spanOfIntern" class="col-form-label">Span</label>
+            <input class="form-control" id="spanOfIntern"></input>
+          </div>
+          <div class="form-group">
+            <label for="internDesc" class="col-form-label">Span</label>
+            <textarea class="form-control" id="internDesc"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Section 2 -->
+  <div class=""  id="section2">
+    <h1>Section 2</h1>
+    <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="jumbotron" id="section3">
+    <h1>Section 3</h1>
+    <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+  </div>
+  
+  
+
   </body>
 </html>
