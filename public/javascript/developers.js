@@ -8,6 +8,14 @@ details.forEach((btn) => {
   });
 });
 
+let apply = document.querySelectorAll(".apply");
+apply.forEach((btn) => {
+	$(btn).click(() => {
+    post = JSON.parse(btn.dataset.post);
+    console.log(post);
+  });
+});
+
 //$(function () {
 //  $("#searchName").autocomplete({
 //    source: function (req, res) {
