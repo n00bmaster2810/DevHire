@@ -20,11 +20,26 @@ const apply = new mongoose.Schema(
       type: String,
       required: true,
     },
+    mob: {
+      type: Number,
+      required: true,
+    },
+    address: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    state: {
+      type: String,
+      required: true,
+    },
     resume: {
       type: String,
       required: true,
-	},
-	
+    },
   },
   { timestamps: true }
 );
