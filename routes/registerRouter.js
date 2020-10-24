@@ -5,7 +5,6 @@ const Company = require("../schema/companySchema");
 const Developer = require("../schema/developerSchema");
 const registerRouter = express.Router();
 const multer = require("multer");
-const { db } = require("../schema/companySchema");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

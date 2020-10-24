@@ -1,20 +1,26 @@
 let details = document.querySelectorAll(".detail");
 details.forEach((btn) => {
   $(btn).click(() => {
-    post = JSON.parse(btn.dataset.post);
+    let post = JSON.parse(btn.dataset.post);
     console.log(post);
     $("#detailModalTitle").html(post.jobOffer);
     $("#detailBody").html(post.description);
   });
 });
 
-let apply = document.querySelectorAll(".apply");
-apply.forEach((btn) => {
-	$(btn).click(() => {
-    post = JSON.parse(btn.dataset.post);
-    console.log(post);
-  });
-});
+
+
+//let apply = document.querySelectorAll(".apply");
+//apply.forEach((btn) => {
+//	$(btn).click(() => {
+//    let post = JSON.parse(btn.dataset.post);
+//    let comp = JSON.parse(btn.dataset.comp);
+//    $("#compId").val(comp._id);
+//    $("#postId").val(post._id);
+//    console.log(post);
+//    console.log(comp);
+//  });
+//});
 
 //$(function () {
 //  $("#searchName").autocomplete({

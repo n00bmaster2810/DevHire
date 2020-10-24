@@ -3,6 +3,8 @@ const developerRouter = express.Router();
 const Company = require("../schema/companySchema");
 const developerGuest = require("../middleware/developerGuest");
 const Developer = require("../schema/developerSchema");
+const Apply = require("../schema/applySchema");
+const moment = require("moment");
 
 /* GET developers page. */
 developerRouter
@@ -10,18 +12,28 @@ developerRouter
     try {
       let subs = [];
       const dev = await Developer.findOne({ email: req.user.email });
-      for (let i = 0; i < dev.subscribed.length; i++){
+      for (let i = 0; i < dev.subscribed.length; i++) {
         const comp = await Company.findById(dev.subscribed[i]);
         subs.push(comp);
       }
-      res.render("developers", {subs: subs, dev: dev});
+      res.render("developers", { subs: subs, dev: dev, moment: moment });
     }
     catch (err) {
       res.status(500).send();
     }
   })
-  .get("/developers/profile", developerGuest, (req, res) => {
-    res.render("devProfile");
+  .get("/developers/profile", developerGuest, async (req, res) => {
+    try {
+      let subs = [];
+      const dev = await Developer.findOne({ email: req.user.email });
+      for (let i = 0; i < dev.subscribed.length; i++) {
+        const comp = await Company.findById(dev.subscribed[i]);
+        subs.push(comp);
+      }
+      res.render("devProfile", { subs: subs, dev: dev, moment: moment });
+    } catch (err) {
+      res.status(500).send();
+    }
   })
   .get("/developers/subscribe/:id", developerGuest, async (req, res) => {
     try {
@@ -102,6 +114,13 @@ developerRouter
       console.log(err);
       return res.status(500).send(err);
     }
+  })
+  .post("/apply",async (req, res) => {
+    const dev = await Developer.findOne({ email: req.user.email });
+    console.log(req.body);
+    console.log(req.file);
+    res.send(req.body);
+    //res.redirect("/developers");
   });
 
 module.exports = developerRouter;

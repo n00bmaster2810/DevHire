@@ -19,19 +19,51 @@ const developer = new mongoose.Schema(
       require: true,
     },
     devPic: {
-      type: String
+      type: String,
     },
     level: {
       type: String,
-      required:true,
+      required: true,
     },
     institution: {
       type: String,
-      required:true,
+      required: true,
     },
-    subscribed: [{
-      type: String, 
-    }]
+    subscribed: [
+      {
+        type: String,
+      },
+    ],
+    linkedin: {
+      type: String,
+    },
+    github: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    website: {
+      type: String,
+    },
+    dob: {
+      type: Date,
+    },
+    school: {
+      type: String,
+    },
+    headline: {
+      type: String,
+    },
+    country: {
+      type: String
+    },
+    city: {
+      type: String
+    },
+    industry: {
+      type: String
+    }
   },
   { timestamps: true }
 );

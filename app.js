@@ -1,18 +1,15 @@
 require("dotenv").config();
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const passport = require("passport");
 const session = require("express-session"); //package for session
 const flash = require("connect-flash"); //package for displaying messages on the front end
 const MongoDbStore = require("connect-mongo")(session); //package to store session in our mongo database
 
-
-
-
-
 // router imports
-const indexRouter = require('./routes/index');
+const indexRouter = require("./routes/index");
 const developerRouter = require("./routes/developerRouter");
 const companyRouter = require("./routes/companyRouter");
 const registerRouter = require("./routes/registerRouter");
@@ -21,22 +18,22 @@ const loginDevRouter = require("./routes/loginDevRouter");
 const myPortfolioRouter = require("./routes/myPortfolioRouter");
 const jobPostRouter = require("./routes/jobPostRouter");
 const trending = require("./routes/trendingRouter");
-
+const updateDev = require("./routes/updateDev");
 const app = express();
 const port = 3000 || process.env.PORT;
 
-
 //mongoose connection setup using online cloud database
 const uri = "mongodb+srv://satya:JNiyAc8Q5Boy7cY9@cluster0.8csuv.mongodb.net/SHIELD?retryWrites=true&w=majority";
-  mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, });
+mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
-  
 const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("mongo connected");
-}).catch((err) => {
-  console.log("mongo not connected");
-});
+connection
+  .once("open", () => {
+    console.log("mongo connected");
+  })
+  .catch((err) => {
+    console.log("mongo not connected");
+  });
 
 //sesion store
 let mongoStore = new MongoDbStore({
@@ -45,13 +42,15 @@ let mongoStore = new MongoDbStore({
 });
 
 //session config
-app.use(session({
-  secret: process.env.COOKIE_SECRET,
-  resave: false,
-  store: mongoStore,
-  saveUninitialized: false,
-  cookie: {maxAge: 1000 * 60 * 60 * 24 }
-}));
+app.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    resave: false,
+    store: mongoStore,
+    saveUninitialized: false,
+    cookie: { maxAge: 1000 * 60 * 60 * 24 },
+  })
+);
 
 app.use(flash());
 
@@ -67,12 +66,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
-
-
-
-
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
@@ -80,14 +73,19 @@ app.use((req, res, next) => {
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
-app.use(express.static('public'));
-app.use(express.urlencoded());
+app.use(express.static("public"));
 app.use(express.json());
 
-app.use('/', indexRouter);
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
+
+app.use("/", indexRouter);
 app.use("/", developerRouter);
 app.use("/", companyRouter);
 app.use("/", registerRouter);
@@ -101,13 +99,7 @@ app.use("/", myPortfolioRouter);
 
 app.use("/", jobPostRouter);
 app.use("/", trending);
-
-
-
-
-
-
-
+app.use("/", updateDev);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
