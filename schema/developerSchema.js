@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const Experience = require("../schema/experienceSchema");
+const Certificate = require("../schema/certificationSchema");
 
 const developer = new mongoose.Schema(
   {
@@ -63,7 +65,9 @@ const developer = new mongoose.Schema(
     },
     industry: {
       type: String
-    }
+    },
+    experience: [Experience.schema],
+    certificate: [Certificate.schema]
   },
   { timestamps: true }
 );

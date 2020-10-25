@@ -11,9 +11,7 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
   </head>
 
   <body>
@@ -205,42 +203,144 @@
 
     <!-- Section 1 -->
 
-    <div class="jumbotron" id="section1">
-      <h1 class="text-center">
-        Experience
-        <button class="btn btn-primary" data-toggle="modal" data-target="#editexp">
-          <span><i class="fa fa-edit"></i></span>
-        </button>
-      </h1>
-
-      <p><b>Following is the my work Experience</b></p>
-      <div class="container-fluid" id="job">
-        <div class="media mx-4 my-4">
-          <img class="mr-3" src="..." alt="image" style="border: 1px crimson" />
-          <div class="media-body mx-4">
-            <h5 class="">Place 1</h5>
-            <h6 class="sub-title text-muted">Time span</h6>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+    <div class="container" id="section1">
+      <div class="row">
+        <div class="col-sm-12 d-flex justify-content-between">
+          <div><h1 class="text-center">Experience</h1></div>
+          <div>
+            <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#addExp">
+              <span><i class="fa fa-plus-square"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <% dev.experience.forEach((exp) => { %> 
+        <div class="row border" id="job">
+        <div class="col-sm-12 d-flex justify-content-between">
+          <div class="media mt-4 mb-4">
+            <img class="mr-3 col-sm-2" src="/uploads/<%= exp.media %> " alt="image" style="border: 1px crimson" width="100%"/>
+            <div class="media-body col-sm-10">
+              <h5 class=""><%= exp.title %> </h5>
+              <h6 class=""><%= exp.company %>---<%= exp.type %></h6>
+              <p class="sub-title text-muted"><%= moment(exp.startDate).format( 'MMM-YYYY') %> to <%= moment(exp.endDate).format( 'MMM-YYYY') %></p>
+              <p class="sub-title text-muted"><%= exp.location %> </p>
+              <br>
+              <p><%= exp.description %> </p>
+            </div>
+          </div>
+          <div class="pt-2">
+            <button class="expEdit btn btn-dark btn-sm" data-exp="<%= JSON.stringify(exp) %>" data-toggle="modal" data-target="#editExp">
+              <span><i class="fa fa-edit"></i></span>
+            </button>
           </div>
         </div>
       </div>
       <hr />
-      <div class="container-fluid" style="border: 2px rgb(11, 165, 88)">
-        <div class="media mx-4 my-4">
-          <img class="mr-3" src="..." alt="image" />
-          <div class="media-body mx-4">
-            <h5 class="">Place 2</h5>
-            <h6 class="sub-title text-muted">Time span</h6>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus
-            viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+      <% }) %> 
+    </div>
+
+
+     <!-- Section 2 -->
+
+    <div class="container" id="section2">
+      <div class="row">
+        <div class="col-sm-12 d-flex justify-content-between">
+          <div><h1 class="text-center">Certifications/Achievements</h1></div>
+          <div>
+            <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#addCert">
+              <span><i class="fa fa-plus-square"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <% dev.certificate.forEach((cert) => { %> 
+        <div class="row border" id="job">
+        <div class="col-sm-12 d-flex justify-content-between">
+          <div class="media mt-4 mb-4">
+            <div class="media-body col-sm-12">
+              <h5 class=""><%= cert.name %> </h5>
+              <h6 class="text-muted"><%= cert.organisation %></h6>
+              <h6 class="text-muted">Issued <%= moment(cert.issueDate).format( 'MMM-YYYY') %> </h6>
+              <a href="<%= cert.url %> " target="_blank">See the certificate</a>
+            </div>
+          </div>
+          <div class="pt-2">
+            <button class="certEdit btn btn-dark btn-sm" data-cert="<%= JSON.stringify(cert) %>" data-toggle="modal" data-target="#editCert">
+              <span><i class="fa fa-edit"></i></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <% }) %> 
+    </div>
+
+    <!-- Modal for experience add-->
+    <div class="modal fade" id="addExp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add Job Experience</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="/addExp/<%= dev._id %> " enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="title" class="col-form-label">Title *</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Enter a suitable title" required />
+              </div>
+              <div class="form-group">
+                <label for="type">Emplyment-type *</label>
+                <select id="type" class="form-control" name="type" required>
+                  <option selected value="Full-time">Full-time</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Self-employed">Self-employed</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="company" class="col-form-label">Company *</label>
+                <input type="text" class="form-control" id="company" name="company" placeholder="Enter the company's name" required />
+              </div>
+              <div class="form-group">
+                <label for="location" class="col-form-label">Location </label>
+                <input type="text" class="form-control" id="location" name="location" placeholder="Allahabad, India" />
+              </div>
+              <div class="form-group">
+                <label for="start" class="col-form-label">Start Date *</label>
+                <input type="date" class="form-control" id="start" name="start" required />
+              </div>
+              <div class="form-group">
+                <label for="end" class="col-form-label">End Date *</label>
+                <input type="date" class="form-control" id="end" name="end" required />
+              </div>
+              <div class="form-group">
+                <label for="industry" class="col-form-label">Industry *</label>
+                <input type="text" class="form-control" id="industry" name="industry" placeholder="Software" required />
+              </div>
+              <div class="form-group">
+                <label for="description" class="col-form-label">Description</label>
+                <textarea type="text" class="form-control" id="description" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="media" class="col-form-label">Upload any media based on the job/company *</label>
+                <input type="file" class="form-control" id="media" name="media" required />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Modal for experience edit-->
-    <div class="modal fade" id="editexp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="editExp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -250,51 +350,151 @@
             </button>
           </div>
           <div class="modal-body">
-            <div class="dropdown">
-              <span class="align-center">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Select Job</button>
-              </span>
-              <div class="dropdown-menu">
-                <p class="dropdown-item">Job 1</p>
-                <p class="dropdown-item">Job 2</p>
-                <p class="dropdown-item">add Job</p>
-                <!--to add another job experince-->
-              </div>
-            </div>
-
-            <form>
+            <form id="editExpForm" method="POST" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="placeOfIntern" class="col-form-label">Place</label>
-                <input type="text" class="form-control" id="placeOfIntern" />
+                <label for="editTitle" class="col-form-label">Title *</label>
+                <input type="text" class="form-control" id="editTitle" name="title" placeholder="Enter a suitable title" required />
               </div>
               <div class="form-group">
-                <label for="spanOfIntern" class="col-form-label">Span</label>
-                <input class="form-control" id="spanOfIntern" />
+                <label for="editType">Emplyment-type *</label>
+                <select id="type" class="form-control" name="editType" required>
+                  <option selected value="Full-time">Full-time</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Self-employed">Self-employed</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="internDesc" class="col-form-label">Span</label>
-                <textarea class="form-control" id="internDesc"></textarea>
+                <label for="editCompany" class="col-form-label">Company *</label>
+                <input type="text" class="form-control" id="editCompany" name="company" placeholder="Enter the company's name" required />
               </div>
+              <div class="form-group">
+                <label for="editLocation" class="col-form-label">Location </label>
+                <input type="text" class="form-control" id="editLocation" name="location" placeholder="Allahabad, India" />
+              </div>
+              <div class="form-group">
+                <label for="editStart" class="col-form-label">Start Date *</label>
+                <input type="date" class="form-control" id="editStart" name="start" required />
+              </div>
+              <div class="form-group">
+                <label for="editEnd" class="col-form-label">End Date *</label>
+                <input type="date" class="form-control" id="editEnd" name="end" required />
+              </div>
+              <div class="form-group">
+                <label for="editIndustry" class="col-form-label">Industry *</label>
+                <input type="text" class="form-control" id="editIndustry" name="industry" placeholder="Software" required />
+              </div>
+              <div class="form-group">
+                <label for="editDescription" class="col-form-label">Description</label>
+                <textarea type="text" class="form-control" id="editDescription" name="description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="editMedia" class="col-form-label">Upload any media based on the job/company *</label>
+                <input type="file" class="form-control" id="editMedia" name="media" required />
+              </div>
+              <button type="submit" id="saveChanges" class="btn btn-primary">Save changes</button>
             </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Section 2 -->
-    <div class="" id="section2">
-      <h1>Section 2</h1>
-      <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+    <!-- Modal for cerifications add-->
+    <div class="modal fade" id="addCert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Add any accomplishments</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/addCert/<%= dev._id %>" method="POST">
+              <div class="form-group">
+                <label for="nameCert" class="col-form-label">Name *</label>
+                <input type="text" class="form-control" id="nameCert" name="name" placeholder="Enter a suitable name" required />
+              </div>
+              <div class="form-group">
+                <label for="orgCert" class="col-form-label">Issuing Organisation *</label>
+                <input type="text" class="form-control" id="orgCert" name="org" placeholder="Google" required />
+              </div>
+              <div class="form-group">
+                <label for="issue" class="col-form-label">Issue Date</label>
+                <input type="date" class="form-control" id="issue" name="issue" />
+              </div>
+              <div class="form-group">
+                <label for="cred" class="col-form-label">Credential Url</label>
+                <input type="url" class="form-control" id="cred" name="cred" />
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Section 3 -->
-    <div class="jumbotron" id="section3">
-      <h1>Section 3</h1>
-      <p>Try to scroll this page and look at the navigation bar while scrolling!</p>
+    <!-- Modal for cerifications edit-->
+    <div class="modal fade" id="editCert" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Edit</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="editCertForm">
+              <div class="form-group">
+                <label for="editNameCert" class="col-form-label">Name *</label>
+                <input type="text" class="form-control" id="editNameCert" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="editOrgCert" class="col-form-label">Issuing Organisation *</label>
+                <input type="text" class="form-control" id="editOrgCert" name="org" required />
+              </div>
+              <div class="form-group">
+                <label for="editIssue" class="col-form-label">Issue Date</label>
+                <input type="date" class="form-control" id="editIssue" name="issue" />
+              </div>
+              <div class="form-group">
+                <label for="editCred" class="col-form-label">Credential Url</label>
+                <input type="url" class="form-control" id="editCred" name="cred" />
+              </div>
+              <button id="saveCert" type="submit" class="btn btn-primary">Save changes</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/javascript/devProfile.js"></script>
   </body>
 </html>
