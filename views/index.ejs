@@ -228,3 +228,227 @@
 	</script>
   </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>DevHire</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/77c6da81ba.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/stylesheets/index.css" />
+  </head>
+  <body>
+    <% if(error){ %>
+    <div class="bg-danger pl-5"><%= error %></div>
+    <% } %>
+    <!-- model for button login -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content rounded">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalHeader">Login</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <ul class="nav nav-tab mb-3" id="login-tab" role="tablist">
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link active" id="dev-tab-login" data-toggle="tab" href="#dev-login" role="tab">I'm a developer</a>
+            </li>
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link" id="comp-tab-login" data-toggle="tab" href="#comp-login" role="tab">I'm here to hire</a>
+            </li>
+          </ul>
+          <div class="modal-body">
+            <div class="tab-content" id="login-tabContent">
+              <div class="tab-pane fade show active" id="dev-login" role="tabpanel">
+                <form action="/loginDev" method="POST">
+                  <div class="form-group">
+                    <label for="dev-login-email">Email address of the developer:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="dev-login-email" />
+                  </div>
+                  <div class="dev-login-form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="dev-login-password" />
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="comp-login" role="tabpanel">
+                <form action="/loginComp" method="POST">
+                  <div class="form-group">
+                    <label for="comp-login-email">Email address of the company:</label>
+                    <input name="email" type="email" class="form-control" placeholder="Enter email" id="comp-login-email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="comp-login-password">Password:</label>
+                    <input name="password" type="password" class="form-control" placeholder="Enter password" id="comp-login-password" />
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- signup model -->
+    <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded">
+          <div class="modal-header">
+            <h5 class="modal-title" id="signupModalHeader">Signup</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <ul class="nav nav-tab mb-3" id="reg-tab" role="tablist">
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link active" id="dev-tab-reg" data-toggle="tab" href="#dev-reg" role="tab">I'm a developer</a>
+            </li>
+            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+              <a class="nav-link" id="comp-tab-reg" data-toggle="tab" href="#comp-reg" role="tab">I'm here to hire</a>
+            </li>
+          </ul>
+          <div class="modal-body">
+            <div class="tab-content" id="reg-tabContent">
+              <div class="tab-pane fade show active" id="dev-reg" role="tabpanel">
+                <form action="/registerDev" method="POST" role="form" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input required name="lastName" type="text" class="form-control" placeholder="Enter your Last Name" id="lastName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="dev-signup-email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="dev-signup-email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="dev-signup-password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="dev-signup-password" />
+                  </div>
+                  <div class="form-group">
+                    <label for="devPic">Upload your photo</label>
+                    <input type="file" class="form-control-file" id="devPic" name="devPic" />
+                  </div>
+                  <div class="form-group">
+                    <label for="level">Level of study</label>
+                    <select required class="form-control" id="level" name="level">
+                      <option value="intermidiate">Intermidiate</option>
+                      <option value="graduate">Graduate</option>
+                      <option value="post-graduate">Post-Graduate</option>
+                      <option value="NA">Not Applicable</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="institution">Name of your institution:</label>
+                    <input required name="institution" type="text" class="form-control" placeholder="Enter your institution" id="institution" />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+              </div>
+              <div class="tab-pane fade" id="comp-reg" role="tabpanel">
+                <form action="/registerComp" method="POST" role="form" enctype="multipart/form-data">
+                  <div class="form-group">
+                    <label for="companyName">Company's name:</label>
+                    <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />
+                  </div>
+                  <div class="form-group">
+                    <label for="comp-signup-email">Email address:</label>
+                    <input required name="email" type="email" class="form-control" placeholder="Enter email" id="comp-signup-email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="comp-signup-password">Password:</label>
+                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="comp-signup-password" />
+                  </div>
+                  <div class="form-group">
+                    <label for="compPic">Upload a label for your company</label>
+                    <input type="file" class="form-control-file" id="compPic" name="compPic" />
+                  </div>
+                  <div class="form-group">
+                    <label for="preference">Preferred position for the job:</label>
+                    <input required name="preference" type="text" class="form-control" placeholder="Enter your preferences" id="preference" />
+                  </div>
+                  <div class="form-group">
+                    <label for="website">Enter the link to your website:</label>
+                    <input required name="website" type="text" class="form-control" placeholder="Enter the website's link" id="website" />
+                  </div>
+                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- front view of page by jumbotron  -->
+    <div class="jumbotron text-center">
+      <h1>Welcome To DevHire</h1>
+      <p>Where talent is valued</p>
+    </div>
+    <div class="container">
+      <div class="text-center">
+        <h2>
+          <button type="button" class="btn btn-lg border rounded" data-toggle="modal" data-target="#loginModal">Login</button>
+          <button type="button" class="btn btn-lg border rounded" data-toggle="modal" data-target="#signupModal">Signup</button>
+        </h2>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-5 shadow bg-white rounded p-3">
+          <h3>For Developers</h3>
+          <hr class="bg-dark" />
+          <br />
+          <p class="text-center">
+            A highly encouraging platform for young and experienced talents all across the world. This website is made by the developers and for the developers.
+          </p>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5 shadow bg-white rounded p-3">
+          <h3>For the Companies</h3>
+          <hr class="bg-dark" />
+          <br />
+          <p class="text-center">
+            We, here on devHire is encouraged and followed by thousands of companies across the globe. Talents recruited from here are valued across the globe.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer class="page-footer">
+      <div class="footer-copyright text-center pt-5">
+        © 2020 Copyright:
+        <a href="/"> DevHire.com</a>
+      </div>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -107,6 +107,98 @@
         </a>
       </div>
     </div>
+
+    <!--Apply Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="applyModalTitle">Apply form</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="applyModalBody">
+            <form action="/apply" method="POST" enctype="multipart/form-data">
+              <input type="hidden" name="compId" id="compId" value="" />
+              <input type="hidden" name="postId" id="postId" value="" />
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="firstName">First Name</label>
+                  <input type="text" name="firstName" class="form-control" id="firstName" placeholder="John" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Doe" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" id="email" placeholder="johndoe@gmail.com" />
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="mob">Mobile No.</label>
+                  <input type="tel" name="mob" class="form-control" id="mob" placeholder="9999999999" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputAddress">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" name="city" id="city" placeholder="Prayagraj" />
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="state">State</label>
+                  <input type="text" class="form-control" name="state" id="state" placeholder="Uttar Pradesh" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="resume" class="mr-3">Upload your resume<input type="file" class="form-control-file" id="resume" name="resume" /></label>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="confirm" name="confirm" />
+                  <label class="form-check-label" for="confirm"
+                    >You confirm that the above information given by you is true and in case of any error your application can be rejected</label
+                  >
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-success mr-auto">Submit</button>
+                  <button type="button" class="btn btn-danger ml-auto" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--See details Modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="detailModalTitle"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="detailBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--cards-->
 
     <div class="container mt-4">
@@ -119,9 +211,14 @@
             <div class="card col-sm-6 p-1">
               <img class="card-img-top" src="/uploads/<%= post.pic %>" alt="Card image cap" />
               <div class="card-body">
-                <h5 class="card-title"><%= post.jobOffer %> </h5>
+                <h5 class="card-title"><%= post.jobOffer %></h5>
                 <p class="card-text"><%= post.tags %></p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <button type="button" class="apply btn btn-success m-2" data-post="<%= JSON.stringify(post) %>" data-comp="<%= JSON.stringify(sub) %> " data-target="#applyModal" data-toggle="modal">
+                  Apply Now
+                </button>
+                <button type="button" class="detail btn btn-success" data-post="<%= JSON.stringify(post) %>" data-target="#detailModal" data-toggle="modal">
+                  See Details
+                </button>
               </div>
             </div>
             <% }); %>
@@ -150,38 +247,12 @@
         </div>
       </div>
     </div>
-    <script>
-      $(function () {
-        $("#searchName").autocomplete({
-          source: function (req, res) {
-            $.ajax({
-              url: "autocomplete/",
-              dataType: "jsonp",
-              type: "GET",
-              data: req,
-              success: function (data) {
-                res(data);
-              },
-              error: function (err) {
-                console.log(err.status);
-              },
-            });
-          },
-          minLength: 1,
-          select: function (event, ui) {
-            if (ui.item) {
-              $("#searchName").val(ui.item.label);
-            }
-          },
-        });
-      });
-    </script>
-
-    <!-- <script
+    <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
-    ></script> -->
+    ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
@@ -192,8 +263,9 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
-    <script src="/public/javascript/developers.js">
+    <script src="/javascript/developers.js">
 
     </script>
+
   </body>
 </html>
