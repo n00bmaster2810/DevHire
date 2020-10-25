@@ -39,7 +39,7 @@
           <div class="modal-body">
             <div class="tab-content" id="login-tabContent">
               <div class="tab-pane fade show active" id="dev-login" role="tabpanel">
-                <form action="/loginDev" method="POST">
+                <form action="/loginDev" method="POST" name="form1">
                   <div class="form-group">
                     <label for="dev-login-email">Email address of the developer:</label>
                     <input name="email" type="email" class="form-control" placeholder="Enter email" id="dev-login-email" />
@@ -49,7 +49,7 @@
                     <input name="password" type="password" class="form-control" placeholder="Enter password" id="dev-login-password" />
                   </div>
                   <br>
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" >Submit</button>
                 </form>
               </div>
               <div class="tab-pane fade" id="comp-login" role="tabpanel">
@@ -93,7 +93,7 @@
           <div class="modal-body">
             <div class="tab-content" id="reg-tabContent">
               <div class="tab-pane fade show active" id="dev-reg" role="tabpanel">
-                <form action="/registerDev" method="POST" role="form" enctype="multipart/form-data">
+                <form action="/registerDev" method="POST" role="form" enctype="multipart/form-data" name="form1" onsubmit="return validation()">
                   <div class="form-group">
                     <label for="firstName">First Name:</label>
                     <input required name="firstName" type="text" class="form-control" placeholder="Enter your First Name" id="firstName" />
@@ -105,10 +105,12 @@
                   <div class="form-group">
                     <label for="dev-signup-email">Email address:</label>
                     <input required name="email" type="email" class="form-control" placeholder="Enter email" id="dev-signup-email" />
+                    <span id="dse" class="text-danger font-weight-bold" > </span>
                   </div>
                   <div class="form-group">
                     <label for="dev-signup-password">Password:</label>
-                    <input required name="password" type="password" class="form-control" placeholder="Enter password" id="dev-signup-password" />
+                    <input required name="password1" type="password" class="form-control" placeholder="Enter password" id="dev-signup-password" />
+                    <span id="dsp" class="text-danger font-weight-bold" > </span>
                   </div>
                   <div class="form-group">
                     <label for="devPic">Upload your photo</label>
@@ -127,11 +129,11 @@
                     <label for="institution">Name of your institution:</label>
                     <input required name="institution" type="text" class="form-control" placeholder="Enter your institution" id="institution" />
                   </div>
-                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                  <button type="submit" class="btn btn-primary mt-3" name="submit" value="Submit" >Submit</button>
                 </form>
               </div>
-              <div class="tab-pane fade" id="comp-reg" role="tabpanel">
-                <form action="/registerComp" method="POST" role="form" enctype="multipart/form-data">
+              <div class="tab-pane fade" id="comp-reg" role="tabpanel" >
+                <form action="/registerComp" method="POST" role="form" enctype="multipart/form-data" name=form2 onsubmit=" return validation1()">
                   <div class="form-group">
                     <label for="companyName">Company's name:</label>
                     <input required name="companyName" type="text" class="form-control" placeholder="Enter your company's name" id="companyName" />
@@ -143,6 +145,7 @@
                   <div class="form-group">
                     <label for="comp-signup-password">Password:</label>
                     <input required name="password" type="password" class="form-control" placeholder="Enter password" id="comp-signup-password" />
+                    <span id="csp" class="text-danger font-weight-bold" > </span>
                   </div>
                   <div class="form-group">
                     <label for="compPic">Upload a label for your company</label>
@@ -156,7 +159,7 @@
                     <label for="website">Enter the link to your website:</label>
                     <input required name="website" type="text" class="form-control" placeholder="Enter the website's link" id="website" />
                   </div>
-                  <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                  <button type="submit" class="btn btn-primary mt-3"  name="submit" value="Submit" >Submit</button>
                 </form>
               </div>
             </div>
@@ -219,6 +222,9 @@
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
-    ></script>
+	></script>
+	<script src="/public/javascript/index.js">
+    
+	</script>
   </body>
 </html>
