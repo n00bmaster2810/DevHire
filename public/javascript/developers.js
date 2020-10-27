@@ -10,17 +10,17 @@ details.forEach((btn) => {
 
 
 
-//let apply = document.querySelectorAll(".apply");
-//apply.forEach((btn) => {
-//	$(btn).click(() => {
-//    let post = JSON.parse(btn.dataset.post);
-//    let comp = JSON.parse(btn.dataset.comp);
-//    $("#compId").val(comp._id);
-//    $("#postId").val(post._id);
-//    console.log(post);
-//    console.log(comp);
-//  });
-//});
+let apply = document.querySelectorAll(".apply");
+apply.forEach((btn) => {
+	$(btn).click(() => {
+    let post = JSON.parse(btn.dataset.post);
+    let comp = JSON.parse(btn.dataset.comp);
+    $("#compId").val(comp._id);
+    $("#postId").val(post._id);
+    console.log(post);
+    console.log(comp);
+  });
+});
 
 //$(function () {
 //  $("#searchName").autocomplete({

@@ -55,7 +55,7 @@
               </div>
             </li>
           </ul>
-          <form action="/trending" method="GET" class="form-inline ml-auto mr-auto">
+          <form action="/search" method="GET" class="form-inline ml-auto mr-auto">
             <div class="form-group">
               <input type="text" class="form-control mr-3" placeholder="Search companies" id="searchName" name="fltrname" class="form-control" />
               <button type="submit" class="btn btn-primary">Search</button>
@@ -67,30 +67,6 @@
         </div>
       </div>
     </nav>
-    <% if(companies.length > 0){%>
-    <div class="container">
-      <div class="row">
-        <div col-sm-12>
-          <h2>Search results:</h2>
-        </div>
-      </div>
-      <hr class="bg-dark" />
-      <div class="row">
-        <% companies.forEach((company) => { %>
-        <div class="col-sm-4">
-          <div class="card card-body">
-            <img class="img-fluid" src="/uploads/<%= company.compPic %> " />
-            <h3><%= company.name %></h3>
-
-            <p><%= company.preference %></p>
-            <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers.length %></span></p>
-            <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-success">Subscribe</button>
-          </div>
-        </div>
-        <% }); %>
-      </div>
-    </div>
-    <% }%>
 
     <div class="container text-center my-3">
       <h1 class="font-weight-light">For WebD</h1>

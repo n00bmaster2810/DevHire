@@ -17,10 +17,9 @@ const jobPost = new mongoose.Schema(
 		pic: {
 			type: String
 		},
-		applied: {
-			default: 0,
-			type: Number
-		}
+		applied: [{
+			type: String,
+		}]
   },
   { timestamps: true }
 );

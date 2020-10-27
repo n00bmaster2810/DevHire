@@ -62,7 +62,7 @@ app.use(passport.session());
 
 //Global middleware can be used accessed anywhere so as to help store the user login in session
 app.use((req, res, next) => {
-  res.locals.user = req.user;
+  res.locals.session = req.session;
   next();
 });
 

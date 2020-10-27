@@ -21,6 +21,7 @@ loginDevRouter.post("/loginDev", (req, res, next) => {
             req.flash("error", info.message);
             return next(err);
           }
+          req.session.dev = dev;
           return res.redirect("/developers");
         });
       }

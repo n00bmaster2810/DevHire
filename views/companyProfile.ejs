@@ -78,7 +78,7 @@
               <h4 class="card-title align-self-center"><%= user.posts[i].jobOffer %></h4>
               <p class="card-subtitle mb-2 text-muted justify-content-end">posted on <%= user.posts[i].createdAt.toDateString() %></p>
               <p class="card-text"><%= user.posts[i].tags %></p>
-              <p>Applied <span class="badge badge-primary badge-pill"><%= user.posts[i].applied %></span></p>
+              <p>Applied <span class="badge badge-primary badge-pill"><%= user.posts[i].applied.length %></span></p>
               <a href="#" class="align-self-center">Go To Post</a>
             </div>
           </div>
