@@ -5,6 +5,17 @@ const developerGuest = require("../middleware/developerGuest");
 const Developer = require("../schema/developerSchema");
 const Apply = require("../schema/applySchema");
 const moment = require("moment");
+const multer = require("multer");
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "public/uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 /* GET developers page. */
 developerRouter
@@ -16,21 +27,23 @@ developerRouter
         const comp = await Company.findById(dev.subscribed[i]);
         subs.push(comp);
       }
+      req.session.dev = dev;
       res.render("developers", { subs: subs, dev: dev, moment: moment });
     }
     catch (err) {
       res.status(500).send();
     }
   })
-  .get("/developers/profile", developerGuest, async (req, res) => {
+  .get("/developers/:id", async (req, res) => {
     try {
       let subs = [];
-      const dev = await Developer.findOne({ email: req.user.email });
+      const dev = await Developer.findById(req.params.id);
+      const log = await Developer.findOne({ email: req.user.email });
       for (let i = 0; i < dev.subscribed.length; i++) {
         const comp = await Company.findById(dev.subscribed[i]);
         subs.push(comp);
       }
-      res.render("devProfile", { subs: subs, dev: dev, moment: moment });
+      res.render("devProfile", { subs: subs, dev: dev, moment: moment, log: log });
     } catch (err) {
       res.status(500).send();
     }
@@ -61,11 +74,12 @@ developerRouter
               console.log(err);
               return res.status(500).send();
             } else {
-              res.redirect("/trending");
+              
+              res.redirect("/search");
             }
           });
         } else {
-          res.redirect("/trending");
+          res.redirect("/search");
         }
       } else {
         return res.status(500).send();
@@ -115,12 +129,47 @@ developerRouter
       return res.status(500).send(err);
     }
   })
-  .post("/apply",async (req, res) => {
-    const dev = await Developer.findOne({ email: req.user.email });
-    console.log(req.body);
-    console.log(req.file);
-    res.send(req.body);
-    //res.redirect("/developers");
+  .post("/apply",upload.single("resume"), async (req, res) => {
+    try {
+      const dev = await Developer.findOne({ email: req.user.email });
+      const comp = await Company.findById(req.params.compId);
+      if (dev) {
+        const apply = new Apply({
+          company_id: req.body.compId,
+          post_id: req.body.postId,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
+          email: req.body.email,
+          mob: req.body.mob,
+          address: req.body.address,
+          city: req.body.city,
+          state: req.body.state,
+          resume: req.file.originalname,
+        });
+        await apply.save();
+        await Company.findOneAndUpdate(
+          { _id: req.body.compId, "posts._id": req.body.postId },
+          {
+            $set: {
+              "posts.$.applied": apply._id,
+            }
+          },
+          function (err, doc) {
+            if (err) {
+              res.status(500).send(err);
+            } else {
+              console.log(doc);
+              res.redirect("/developers");
+            }
+          }
+        );
+        await dev.applied.push(req.body.postId);
+        await dev.save();
+      }
+    }
+    catch (err) {
+      res.status(500).send(err);
+    }
   });
 
 module.exports = developerRouter;

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Developer</title>
+    <title>Profile Page</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -93,7 +93,9 @@
           </div>
         </div>
         <div class="col-sm-2">
+          <% if(dev._id.toString()==log._id.toString()) {%>
           <button class="btn btn-primary" data-toggle="modal" data-target="#basicEdit"><i class="fa fa-edit mr-2"></i>Edit profile</button>
+          <% } %> 
         </div>
       </div>
     </div>
@@ -208,9 +210,11 @@
         <div class="col-sm-12 d-flex justify-content-between">
           <div><h1 class="text-center">Experience</h1></div>
           <div>
+            <% if(dev._id.toString()==log._id.toString()) {%>
             <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#addExp">
               <span><i class="fa fa-plus-square"></i></span>
             </button>
+          <% } %> 
           </div>
         </div>
       </div>
@@ -229,9 +233,11 @@
             </div>
           </div>
           <div class="pt-2">
+            <% if(dev._id.toString()==log._id.toString()) {%>
             <button class="expEdit btn btn-dark btn-sm" data-exp="<%= JSON.stringify(exp) %>" data-toggle="modal" data-target="#editExp">
               <span><i class="fa fa-edit"></i></span>
             </button>
+          <% } %> 
           </div>
         </div>
       </div>
@@ -247,9 +253,11 @@
         <div class="col-sm-12 d-flex justify-content-between">
           <div><h1 class="text-center">Certifications/Achievements</h1></div>
           <div>
+            <% if(dev._id.toString()==log._id.toString()) {%>
             <button class="btn btn-dark btn-sm" data-toggle="modal" data-target="#addCert">
               <span><i class="fa fa-plus-square"></i></span>
             </button>
+          <% } %> 
           </div>
         </div>
       </div>
@@ -265,9 +273,11 @@
             </div>
           </div>
           <div class="pt-2">
+            <% if(dev._id.toString()==log._id.toString()) {%>
             <button class="certEdit btn btn-dark btn-sm" data-cert="<%= JSON.stringify(cert) %>" data-toggle="modal" data-target="#editCert">
               <span><i class="fa fa-edit"></i></span>
             </button>
+          <% } %> 
           </div>
         </div>
       </div>

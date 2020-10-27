@@ -21,6 +21,7 @@ loginCompRouter.post("/loginComp", (req, res, next) => {
             req.flash("error", info.message);
             return next(err);
           }
+          req.session.comp = comp;
           return res.redirect("/companies");
         });
       }

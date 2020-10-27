@@ -67,7 +67,10 @@ const developer = new mongoose.Schema(
       type: String
     },
     experience: [Experience.schema],
-    certificate: [Certificate.schema]
+    certificate: [Certificate.schema],
+    applied: [{
+			type: String,
+		}]
   },
   { timestamps: true }
 );
