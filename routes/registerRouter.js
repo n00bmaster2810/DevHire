@@ -51,9 +51,6 @@ registerRouter
         }
       });
 
-      let path = "";
-      if (req.file) path = req.file.path;
-
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -63,7 +60,7 @@ registerRouter
         lastName: lastName,
         email: email,
         password: hashedPassword,
-        devPic: path,
+        devPic: req.file.originalname,
         level: level,
         institution: institution,
       });
@@ -109,15 +106,13 @@ registerRouter
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
-      let path = "";
-      if (req.file) path = req.file.path;
 
       //storing req body data in database
       const comp = new Company({
         name: companyName,
         email: email,
         password: hashedPassword,
-        compPic: path,
+        compPic: req.file.originalname,
         preference: preference,
         website: website,
       });

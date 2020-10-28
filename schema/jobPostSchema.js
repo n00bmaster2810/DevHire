@@ -14,8 +14,9 @@ const jobPost = new mongoose.Schema(
 			type: String,
 			require: true
 		},
-		pic: {
-			type: String
+		endDate: {
+			type: Date,
+			required: true
 		},
 		applied: [{
 			type: String,
