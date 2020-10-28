@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Applications</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-sm-6">
+          <h5>Application Id: <span><%= post._id %></span></h5>
+        </div>
+        <div class="col-sm-6">
+          <h5>Application Name: <%= post.jobOffer %></h5>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">No.</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mob No.</th>
+                <th scope="col">Address</th>
+                <th scope="col">Resume</th>
+                <th scope="col">Applied At</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < applications.length ; i++) {%>
+              <tr>
+                <th scope="row"><%= i+1 %> </th>
+                <td><%= applications[i].firstName %> <%= applications[i].lastName %> </td>
+                <td><%= applications[i].email %></td>
+				<td><%= applications[i].mob %></td>
+				<td><%= applications[i].address %>, <%= applications[i].city %>, <%= applications[i].state %></td>
+				<td><a href="/uploads/<%= applications[i].resume %>" target="_blank">Link to the pdf</a></td>
+				<td><%=moment(applications[i].createdAt).format( 'DD-MMM-YYYY') %> </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

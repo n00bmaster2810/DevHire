@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const Post = require("../schema/jobPostSchema");
-
+const Update = require("../schema/updateSchema");
 const company = new mongoose.Schema(
   {
     name: {
@@ -19,24 +19,38 @@ const company = new mongoose.Schema(
     compPic: {
       type: String,
     },
-    preference: {
-      type: String,
-      require: true,
-    },
     website: {
       type: String,
       require: true,
     },
     posts: [Post.schema],
+    update: [Update.schema],
     headquarter: {
       type: String,
     },
-    subscribers:  [{
-      type: String, 
-    }],
+    subscribers: [
+      {
+        type: String,
+      },
+    ],
     coverPic: {
       type: String,
-    },   
+    },
+    linkedin: {
+      type: String,
+    },
+    facebook: {
+      type: String,
+    },
+    twitter: {
+      type: String,
+    },
+    pininterest: {
+      type: String,
+    },
+    instagram: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
