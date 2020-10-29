@@ -1,32 +1,40 @@
-img {
-    width:100%;
-    height: auto;
-    border-radius: 8px;
-    padding: 5px;
-    
-  }
-  
-  .card{
-  
-    width: 80%;
-background-color: white;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-margin-bottom: 25px;
-    
-  }
-  .card:hover{
-border: 8px solid white;
-background-color: white;
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-opacity: 100%;
-margin-bottom: 25px;
+body {
+  font-family: "Roboto", sans-serif;
+  color: rgb(82, 83, 80);
 }
-  h1,h2,h3,h4{
 
-    color:rgb(126, 117, 117);
-  }
-  
-  
-  
-  
-  
+.card {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 25px;
+}
+.card:hover {
+  border: 8px solid white;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  opacity: 100%;
+  margin-bottom: 25px;
+}
+h1,
+h2,
+h3,
+h4,
+hr,
+h6 {
+  color: rgb(20, 13, 13);
+}
+
+a{
+  text-decoration: none;
+}
+
+.modal-content{
+  background-color: rgb(92, 148, 221);
+}
+.modal-header{
+  background-color: rgb(43, 39, 39);
+}
+.modal-title{
+  color: aliceblue;
+}

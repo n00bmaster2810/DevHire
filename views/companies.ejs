@@ -10,6 +10,7 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/stylesheets/companies.css" />
   </head>
 
@@ -110,10 +111,8 @@
               </div>
 
               <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -147,10 +146,8 @@
                 ></textarea>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -192,10 +189,8 @@
               </div>
 
               <button type="submit" id="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -213,10 +208,8 @@
             Oops by continuing to delete this post you may loose all it's content and its data. <br />
             To proceed with it click on the delete cutton or you can cancel it too.
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal" id="deletePost">Delete</button>
-            <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-          </div>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" id="deletePost">Delete</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
@@ -271,13 +264,12 @@
     <!--recent posts fetched from database-->
     <div class="container mt-5">
       <div class="row">
-        <div class="col-sm-9">
+        <div class="col-md-9">
           <h1>Recent Posts</h1>
           <div class="row">
             <% for (var i = 0; i < user.posts.length; i++) { %>
-            <div class="col-sm-6">
+            <div class="col-sm-12 ml-auto mr-auto">
               <div class="card shadow bg-white rounded">
-                <img class="card-img-top" src="/uploads/<%= user.posts[i].pic %> " alt="Card image" />
                 <div class="card-body">
                   <h4 class="card-title text-bold"><%= user.posts[i].jobOffer %></h4>
                   <p><%= user.posts[i].tags %></p>
@@ -313,32 +305,30 @@
             <% } %>
           </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-md-3">
           <h3>Recent Updates</h3>
           <div class="row">
             <% user.update.forEach(upd => {%>
-            <div class="col-sm-12">
+            <div class="col">
               <div class="accordion" id="accordionUpdate">
                 <div class="card">
                   <div class="card-header" id="head">
                     <h2 class="mb-0">
                       <button
-                        class="btn btn-link btn-block text-left"
+                        class="btn btn btn-block text-left"
                         type="button"
                         data-toggle="collapse"
                         data-target="#collapse"
                         aria-expanded="true"
                         aria-controls="collapse"
                       >
-                        <%= upd.title %> 
+                        <%= upd.title %>
                       </button>
                     </h2>
                   </div>
 
                   <div id="collapse" class="collapse" aria-labelledby="head" data-parent="#accordionUpdate">
-                    <div class="card-body">
-                      <%= upd.description %> 
-                    </div>
+                    <div class="card-body"><%= upd.description %></div>
                   </div>
                 </div>
               </div>
