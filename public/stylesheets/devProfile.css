@@ -1,0 +1,80 @@
+body {
+  font-family: 'Raleway', sans-serif;
+  background-color: #f7fbfc;
+}
+
+a{
+  text-decoration: none;
+  color: #101414;
+}
+a:hover,a:active{
+  text-decoration: none;
+  color: #769fcd;
+}
+body > nav{
+	background-color: #769fcd;
+}
+
+body > nav .sub{
+	border: #b9d7ea solid 2px;
+}
+body > nav .sub:hover{
+	background-color: #b9d7ea;
+	border: #b9d7ea solid 2px;
+}
+.btn-primary:hover{
+	background-color: #2f00ff;
+}
+
+.post-card{
+	background-color: #d6e6f2a8;
+}
+
+.update-card .card-header{
+	background-color:#769fcd;
+}
+
+.update-card .card-body{
+	background-color:#d6e6f2ad;
+}
+
+.update-card a{
+	text-decoration: none;
+	color: #769fcd;
+}
+
+.profile{
+  border: #b9d7ea solid 1px;
+  background-color: #99b2cf93;
+}
+
+#section1 .nav-item a{
+  text-decoration: none;
+  background-color: #7398c49f;
+  color: #101414;
+}
+
+#section1 .nav-item a:hover{
+  text-decoration: none;
+  background-color: #1835589f;
+  color: #0a3636;
+}
+
+#section1 .nav-item a:active{
+  text-decoration: none;
+  background-color: #1835589f;
+  color: #0a3636;
+}
+
+
+h1{
+  font-family: 'Arvo';
+}
+hr{
+  border: 50px auto 50px auto;
+}
+.row{
+  border: 2px black;
+  box-shadow: blueviolet;
+  border-radius: 7px;
+}

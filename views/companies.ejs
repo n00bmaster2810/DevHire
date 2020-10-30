@@ -139,7 +139,7 @@
                   rows="12"
                   type="text"
                   class="form-control"
-                  placeholder="Enter Brief Description of Job"
+                  placeholder="Enter an update"
                   id="description"
                   name="description"
                   required
@@ -208,13 +208,13 @@
             Oops by continuing to delete this post you may loose all it's content and its data. <br />
             To proceed with it click on the delete cutton or you can cancel it too.
           </div>
-          <button type="button" class="btn btn-danger" data-dismiss="modal" id="deletePost">Delete</button>
-          <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+          <button class="btn btn-danger btn-inline"  id="deletePost">Delete</button>
+          <button type="button" class="btn btn-success btn-inline" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color: rgb(2, 2, 20)">
+      <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a href="companies/<%= user._id %> ">
             <img src="/uploads/<%=user.compPic %>" class="rounded mr-3" class="container" alt="<%= user.name %> " style="color: beige" height="50" />
@@ -234,7 +234,7 @@
           <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
             <button
               type="button"
-              class="btn btn-outline-warning ml-auto mr-2 mt-2 mb-2"
+              class="btn sub ml-auto mr-2 mt-2 mb-2"
               data-user="<%= JSON.stringify(user) %>"
               data-target="#editProfileModal"
               data-toggle="modal"
@@ -243,7 +243,7 @@
               Edit profile
             </button>
             <form action="/logout" id="logout" method="POST" class="mt-2 mb-2">
-              <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
+              <button class="btn sub mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
             </form>
           </div>
         </div>
@@ -256,15 +256,15 @@
     <% if(user.posts.length>0) { %>
 
     <!-- body of page that contains company details -->
-    <div class="container mt-5">
-      <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#postModal">Post an offer</button>
-      <button type="button" class="btn btn-primary m-2" data-toggle="modal" data-target="#updateModal">Post an Update</button>
+    <div class="container mt-5 posting">
+      <button type="button" class="btn btn-outline-primary m-2" data-toggle="modal" data-target="#postModal">Post an offer</button>
+      <button type="button" class="btn btn-outline-primary m-2" data-toggle="modal" data-target="#updateModal">Post an Update</button>
     </div>
 
     <!--recent posts fetched from database-->
     <div class="container mt-5">
       <div class="row">
-        <div class="col-md-9">
+        <div class="col-sm-7">
           <h1>Recent Posts</h1>
           <div class="row">
             <% for (var i = 0; i < user.posts.length; i++) { %>
@@ -305,11 +305,11 @@
             <% } %>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-sm-5">
           <h3>Recent Updates</h3>
           <div class="row">
             <% user.update.forEach(upd => {%>
-            <div class="col">
+            <div class="col-sm-12">
               <div class="accordion" id="accordionUpdate">
                 <div class="card">
                   <div class="card-header" id="head">

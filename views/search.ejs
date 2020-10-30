@@ -1,55 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Search Results</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-</head>
-<body>
-	<nav class="navbar navbar-expand-md navbar-light bg-light static-top">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/stylesheets/show.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light static-top">
       <div class="container-fluid">
         <a class="navbar-brand" href="/developers/<%=dev._id %> ">
           <h3>
-            <img src="/uploads/<%= dev.devPic %> " width="40" height="40" class="d-inline-block align-top" alt="" loading="lazy" />
+            <img src="/uploads/<%= dev.devPic %> " width="40" height="40" class="rounded-circle" alt="" loading="lazy" />
             DevHire
           </h3>
         </a>
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mx-1">
-            <li class="nav-item active">
-              <a class="nav-link" href="/developers">Home <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+              <a class="nav-link h6" href="/developers">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/trending">Company <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <div class="d-flex flex-row">
-                <a class="nav-link" href="#">Portfolio<span class="sr-only">(current)</span></a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Connect
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Referals</a>
-                <a class="dropdown-item" href="#">Guidance</a>
-                <a class="dropdown-item" href="#">Blogs</a>
-              </div>
+              <a class="nav-link h6" href="/trending">Company</a>
             </li>
           </ul>
           <form action="/search" method="GET" class="form-inline ml-auto mr-auto">
@@ -59,42 +44,40 @@
             </div>
           </form>
           <form action="/logout" id="logout" method="POST" class="ml-auto">
-            <button class="btn btn-outline-success mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
+            <button class="btn sub mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
           </form>
         </div>
       </div>
-	</nav>
-	
-	
-    <div class="container">
+    </nav>
+
+    <div class="container mt-5">
       <div class="row">
         <div col-sm-12>
           <h2>Search results:</h2>
         </div>
       </div>
-	  <hr class="bg-dark" />
-	  <% if(companies.length > 0){%>
+      <hr class="bg-dark" />
+      <% if(companies.length > 0){%>
       <div class="row">
         <% companies.forEach((company) => { %>
         <div class="col-sm-4">
           <div class="card card-body">
-            <img class="img-fluid" src="/uploads/<%= company.compPic %> " />
+            <img class="img-fluid rounded-circle" src="/uploads/<%= company.compPic %> " />
             <a href="/companies/<%= company._id %> "><h3><%= company.name %></h3></a>
 
             <p><%= company.preference %></p>
             <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers.length %></span></p>
-            <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-success">Subscribe</button>
+            <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-outline-primary">Subscribe</button>
           </div>
         </div>
         <% }); %>
-	  </div>
-		  <% }else{%>
-			<h1>None found</h1>
-		  <% } %> 
+      </div>
+      <% }else{%>
+      <h1>None found</h1>
+      <% } %>
     </div>
 
-	
-	<script
+    <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
@@ -111,5 +94,5 @@
       crossorigin="anonymous"
     ></script>
     <script type="module" src="/javascript/search.js"></script>
-</body>
+  </body>
 </html>

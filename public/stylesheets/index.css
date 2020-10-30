@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font-family: 'Raleway', sans-serif;
+  background-color: rgba(170, 210, 219, 0.404);
 }
 
 .jumbotron{
@@ -11,6 +12,7 @@ body {
 
 .btn:hover{
  box-shadow: 2px 2px #0000007e;
+ color: #cbecf3;
 }
 a {
   color: dimgrey;
@@ -20,3 +22,24 @@ a:hover{
   text-decoration: none;
   font-size: large;
 }
+
+.box{
+  background-color: #adb1c44f;
+  box-shadow: 0 .5rem 1rem #1a2933a2;
+}
+.box:hover{
+  box-shadow: 0 .5rem 1rem #1a2933;
+}
+
+.btn{
+  background-color: #1a2933;
+  color: #ffffff;
+}
+
+.modal-content{
+  background-color: #d6e0f0;
+}
+.nav-tab .nav-item{
+  border: #1a2933 solid 1px;
+}
+

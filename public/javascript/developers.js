@@ -8,7 +8,7 @@ details.forEach((btn) => {
   });
 });
 
-
+$("#carousel").find(".carousel-item").first().addClass("active");
 
 let apply = document.querySelectorAll(".apply");
 apply.forEach((btn) => {

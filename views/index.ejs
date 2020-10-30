@@ -10,13 +10,18 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/77c6da81ba.js" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+      integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+      crossorigin="anonymous"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/stylesheets/index.css" />
   </head>
   <body>
     <% if(error){ %>
-    <div class="bg-danger pl-5"><%= error %></div>
+    <div class="bg-danger pl-5 bg-outline-danger"><%= error %></div>
     <% } %>
     <!-- model for button login -->
     <div class="modal fade" id="loginModal" tabindex="-1">
@@ -81,12 +86,14 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
+            <hr class="bg-dark">
           </div>
+          
           <ul class="nav nav-tab mb-3" id="reg-tab" role="tablist">
-            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+            <li class="nav-item ml-auto mr-auto" role="presentation">
               <a class="nav-link active" id="dev-tab-reg" data-toggle="tab" href="#dev-reg" role="tab">I'm a developer</a>
             </li>
-            <li class="nav-item ml-auto mr-auto border rounded" role="presentation">
+            <li class="nav-item ml-auto mr-auto" role="presentation">
               <a class="nav-link" id="comp-tab-reg" data-toggle="tab" href="#comp-reg" role="tab">I'm here to hire</a>
             </li>
           </ul>
@@ -165,7 +172,7 @@
       </div>
     </div>
     <!-- front view of page by jumbotron  -->
-    <div class="jumbotron text-center">
+    <div class="jumbotron text-center container-fluid">
       <h1>Welcome To DevHire</h1>
       <p>Where talent is valued</p>
     </div>
@@ -180,7 +187,7 @@
     <br>
     <div class="container">
       <div class="row">
-        <div class="col-sm-5 shadow bg-white rounded p-3">
+        <div class="col-sm-5 box rounded p-3">
           <h3>For Developers</h3>
           <hr class="bg-dark" />
           <br />
@@ -189,7 +196,7 @@
           </p>
         </div>
         <div class="col-sm-2"></div>
-        <div class="col-sm-5 shadow bg-white rounded p-3">
+        <div class="col-sm-5 box rounded p-3">
           <h3>For the Companies</h3>
           <hr class="bg-dark" />
           <br />

@@ -5,7 +5,6 @@ const jobPostRouter = express.Router();
 const Apply = require("../schema/applySchema");
 const moment = require("moment");
 const Update = require("../schema/updateSchema");
-const { update } = require("../schema/jobPostSchema");
 
 //Post route so as to store the jobPosts and save it inside postSchema subdocs in the Companies collection
 jobPostRouter
@@ -98,14 +97,15 @@ jobPostRouter
   .post("/updatePost",async (req, res) => {
     try {
       const { title, description } = req.body;
-      
+      console.log(req.body);
       const comp = await Company.findOne({ email: req.user.email });
-      const update = new Update({
+      const updateS = new Update({
         title: title,
         description: description
       });
-      await update.save();
-      await comp.update.push(update);
+
+      await updateS.save();
+      comp.update.push(updateS);
       await comp.save();
       res.redirect("/companies");
     }

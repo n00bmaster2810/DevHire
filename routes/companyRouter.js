@@ -59,7 +59,8 @@ companyRouter
   .post("/editComp/:id", cpUpload, async (req, res) => {
     try {
       const comp = await Company.findById(req.params.id);
-      let compPic = "", compCover = "";
+      let compPic = "",
+        compCover = "";
 
       console.log(req.files);
       if (comp.compPic) {
@@ -75,7 +76,7 @@ companyRouter
           compPic = "default-comPic.jpg";
         }
       }
-      console.log(compPic);
+      console.log(req.body);
       if (comp.coverPic) {
         if (req.files.compCover[0]) {
           compCover = req.files.compCover[0].originalname;
@@ -90,7 +91,7 @@ companyRouter
         }
       }
       console.log(compPic);
-      console.log(compCover)
+      console.log(compCover);
       await Company.findByIdAndUpdate(
         req.params.id,
         {
