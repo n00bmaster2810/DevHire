@@ -48,8 +48,9 @@ developerRouter
       res.status(500).send();
     }
   })
-  .get("/developers/subscribe/:id", developerGuest, async (req, res) => {
+  .post("/developers/subscribe/:id", developerGuest, async (req, res) => {
     try {
+      console.log("!\n");
       const comp = await Company.findById(req.params.id);
       const dev = await Developer.findOne({ email: req.user.email });
       if (comp && dev) {
@@ -75,7 +76,7 @@ developerRouter
               return res.status(500).send();
             } else {
               
-              res.redirect("/search");
+              res.redirect("/developers");
             }
           });
         } else {
@@ -134,7 +135,7 @@ developerRouter
       const dev = await Developer.findOne({ email: req.user.email });
       const comp = await Company.findById(req.params.compId);
       if (dev) {
-        const apply = new Apply({
+        var apply = new Apply({
           company_id: req.body.compId,
           post_id: req.body.postId,
           firstName: req.body.firstName,

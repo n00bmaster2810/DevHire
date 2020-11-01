@@ -18,37 +18,10 @@
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a href="companies/<%= user._id %> ">
+        <a href="/companies">
           <img src="/uploads/<%=user.compPic %>" class="rounded mr-3" class="container" alt="<%= user.name %> " style="color: beige" height="50" />
         </a>
         <h3 class="text-white"><%= user.name %></h3>
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-          <button
-            type="button"
-            class="btn sub ml-auto mr-2 mt-2 mb-2"
-            data-user="<%= JSON.stringify(user) %>"
-            data-target="#editProfileModal"
-            data-toggle="modal"
-            id="profile"
-          >
-            <i class="fa fa-edit"></i>
-            Edit profile
-          </button>
-          <form action="/logout" id="logout" method="POST" class="mt-2 mb-2">
-            <button class="btn sub mx-2" type="submit" onclick="document.getElementById('logout')"><i class="fa fa-sign-out-alt"></i>Logout</button>
-          </form>
-        </div>
       </div>
     </nav>
 
@@ -63,7 +36,9 @@
                 <div class="col-sm-8">
                   <h3 class="card-title"><%= user.name %></h3>
                   <p>
-                    <a class="btn btn-primary btn-sm" href="#">Subscribe</a>
+                    <form action="/developers/subscribe/<%= user._id %> " method="POST">
+                    <button type="submit" class="btn subs btn-primary btn-sm" data-comp="<%= JSON.stringify(user)%>" >Subscribe</button>
+                  </form>
                     <a href="<%= user.website %> " type="button" class="btn btn-primary btn-sm">Visit Website</a>
                   </p>
                   <p class="text-muted align-right mt-3">
@@ -138,5 +113,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/javascript/companyProfile.js"></script>
   </body>
 </html>

@@ -5,19 +5,23 @@ const Company = require("../schema/companySchema");
 const Developer = require("../schema/developerSchema");
 
 
-/* GET home page. */
+/* GET home page. */ 
 router.get("/trending", async (req, res) => {
   try {
-    await Company.find({}, (err, companies) => {
-      if (err) {
-        res.status(500).send();
-        console.log(err);
-      } else {
-        res.render("show", { companies: companies });
-      }
-    });
+    const dev = await Developer.findOne({ email: req.user.email });
+    const companies = await Company.find({ _id: { $nin: dev.subscribed } });
+    res.render("show", { companies: companies, dev: dev });
+    //await Company.find({}, (err, companies) => {
+    //  if (err) {
+    //    res.status(500).send();
+    //    console.log(err);
+    //  } else {
+    //    res.render("show", { companies: companies, dev: dev });
+    //  }
+    //});
   }
   catch (err) {
+    console.log(err)
     res.status(500).send(err);
   }
 })
