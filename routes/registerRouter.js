@@ -38,18 +38,25 @@ registerRouter
       }
 
       //Check if email exists
-      Developer.exists({ email: email }, (err, result) => {
-        if (result) {
-          req.flash("error", "Email Exists");
-          return res.redirect("/");
-        }
-      });
-      User.exists({ email: email }, (err, result) => {
-        if (result) {
-          req.flash("error", "Email Exists");
-          return res.redirect("/");
-        }
-      });
+
+      const devi = await Developer.findOne({ email: req.body.email });
+      if (devi) {
+        req.flash("error", "Email Exists");
+        res.redirect("/");
+      }
+
+      //await Developer.exists({ email: email }, (err, result) => {
+      //  if (result) {
+      //    req.flash("error", "Email Exists");
+      //    return res.redirect("/");
+      //  }
+      //});
+      //await User.exists({ email: email }, (err, result) => {
+      //  if (result) {
+      //    req.flash("error", "Email Exists");
+      //    return res.redirect("/");
+      //  }
+      //});
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
@@ -91,18 +98,11 @@ registerRouter
       }
 
       //Check if email exists
-      Company.exists({ email: email }, (err, result) => {
-        if (result) {
-          req.flash("error", "Email Exists");
-          return res.redirect("/");
-        }
-      });
-      User.exists({ email: email }, (err, result) => {
-        if (result) {
-          req.flash("error", "Email Exists");
-          return res.redirect("/");
-        }
-      });
+      const compi = await Developer.findOne({ email: req.body.email });
+      if (compi) {
+        req.flash("error", "Email Exists");
+        res.redirect("/");
+      }
 
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
