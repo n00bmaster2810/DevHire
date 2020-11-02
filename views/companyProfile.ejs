@@ -44,16 +44,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-          <button
-            type="button"
-            class="btn sub ml-auto mr-2 mt-2 mb-2"
-            data-user="<%= JSON.stringify(user) %>"
-            data-target="#editProfileModal"
-            data-toggle="modal"
-            id="profile"
-          >
-            Edit profile
-          </button>
           <form action="/logout" id="logout" method="POST" class="mt-2 mb-2">
             <button class="btn sub mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
           </form>
