@@ -45,19 +45,6 @@ registerRouter
         res.redirect("/");
       }
 
-      //await Developer.exists({ email: email }, (err, result) => {
-      //  if (result) {
-      //    req.flash("error", "Email Exists");
-      //    return res.redirect("/");
-      //  }
-      //});
-      //await User.exists({ email: email }, (err, result) => {
-      //  if (result) {
-      //    req.flash("error", "Email Exists");
-      //    return res.redirect("/");
-      //  }
-      //});
-
       //password hashing by use of bcrypt
       const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -98,7 +85,7 @@ registerRouter
       }
 
       //Check if email exists
-      const compi = await Developer.findOne({ email: req.body.email });
+      const compi = await Company.findOne({ email: req.body.email });
       if (compi) {
         req.flash("error", "Email Exists");
         res.redirect("/");

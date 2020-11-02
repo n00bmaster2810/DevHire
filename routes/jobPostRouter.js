@@ -43,14 +43,32 @@ jobPostRouter
           break;
         }
       }
+      console.log(req.body)
       if (post) {
-        let editPost = comp.posts[index];
-        editPost.jobOffer = req.body.editJobOffer;
-        editPost.description = req.body.editDescription;
-        editPost.tags = req.body.editTags;
-        editPost.endDate = req.body.editEndDate;
-        await comp.save();
-        res.redirect("/companies");
+        await JobPost.findByIdAndUpdate(
+          post._id,
+          {
+            jobOffer: req.body.editJobOffer,
+            description: req.body.editDescription,
+            tags: req.body.editTags,
+            endDate: req.body.editEndDate,
+          },
+          (err, result) => {
+            if (err) {
+              res.status(500).send(err);
+            } else {
+              console.log(result);
+              res.redirect("/companies");
+            }
+          }
+        );
+        //let editPost = comp.posts[index];
+        //editPost.jobOffer = req.body.editJobOffer;
+        //editPost.description = req.body.editDescription;
+        //editPost.tags = req.body.editTags;
+        //editPost.endDate = req.body.editEndDate;
+        //await comp.save();
+        
       } else {
         return res.status(404).send();
       }
