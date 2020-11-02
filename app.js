@@ -49,6 +49,7 @@ app.use(
     store: mongoStore,
     saveUninitialized: false,
     cookie: { maxAge: 1000 * 60 * 60 * 24 },
+    unset: "destroy",
   })
 );
 
@@ -93,6 +94,7 @@ app.use("/", loginCompRouter);
 app.use("/", loginDevRouter);
 app.post("/logout", (req, res) => {
   req.logout();
+  req.session = null;
   return res.redirect("/");
 });
 app.use("/", myPortfolioRouter);

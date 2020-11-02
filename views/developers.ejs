@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Developer</title>
+    <title><%= dev.firstName %> </title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -177,7 +177,7 @@
           <% subs.forEach(sub => { %>
           <div class="row mt-3">
             <% sub.posts.forEach(post => { %>
-            <div class="card post-card col-sm-6 p-1">
+            <div class="card post-card col-md-6 col-sm-12 p-1">
               <div class="card-body">
                 <h3><%= sub.name %></h3>
                 <h5 class="card-title"><%= post.jobOffer %></h5>

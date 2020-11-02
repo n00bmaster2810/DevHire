@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>company profile</title>
+    <title><%= user.name %>'s Profile </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
@@ -16,6 +16,7 @@
   </head>
   <body>
     <!--Navbar-->
+    <% if(session.dev){ %>
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a href="/companies">
@@ -24,7 +25,42 @@
         <h3 class="text-white"><%= user.name %></h3>
       </div>
     </nav>
-
+    <% } else { %>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a href="companies/<%= user._id %> ">
+          <img src="/uploads/<%=user.compPic %>" class="rounded mr-3" class="container" alt="<%= user.name %> " style="color: beige" height="50" />
+        </a>
+        <h3 class="text-white"><%= user.name %></h3>
+        <button
+          class="navbar-toggler collapsed"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+          <button
+            type="button"
+            class="btn sub ml-auto mr-2 mt-2 mb-2"
+            data-user="<%= JSON.stringify(user) %>"
+            data-target="#editProfileModal"
+            data-toggle="modal"
+            id="profile"
+          >
+            Edit profile
+          </button>
+          <form action="/logout" id="logout" method="POST" class="mt-2 mb-2">
+            <button class="btn sub mx-2" type="submit" onclick="document.getElementById('logout')">Logout</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <% } %>
     <!--Basic-->
     <div class="container mt-5">
       <div class="row">
@@ -36,9 +72,12 @@
                 <div class="col-sm-8">
                   <h3 class="card-title"><%= user.name %></h3>
                   <p>
-                    <form action="/developers/subscribe/<%= user._id %> " method="POST">
-                    <button type="submit" class="btn subs btn-primary btn-sm" data-comp="<%= JSON.stringify(user)%>" >Subscribe</button>
-                  </form>
+                    <% if(session.dev) {%> <% if(session.dev.subscribed.includes(user._id.toString(), 0)) {%>
+                    <button data-comp="<%= JSON.stringify(user)%> " type="button" class="unsubs btn btn-outline-success">Subscribed</button>
+                    <% }else { %>
+                    <button type="button" class="btn subs btn-primary btn-sm" data-comp="<%= JSON.stringify(user)%>">Subscribe</button>
+                    <% } %> <%}%>
+
                     <a href="<%= user.website %> " type="button" class="btn btn-primary btn-sm">Visit Website</a>
                   </p>
                   <p class="text-muted align-right mt-3">

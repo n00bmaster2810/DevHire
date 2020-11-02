@@ -67,7 +67,11 @@
 
             <p><%= company.preference %></p>
             <p>Subscribers <span class="badge badge-primary badge-pill"><%= company.subscribers.length %></span></p>
-            <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-outline-primary">Subscribe</button>
+            <% if(session.dev.subscribed.includes(company._id.toString(), 0)) {%> 
+              <button data-comp="<%= JSON.stringify(company)%> " type="button" class="unsubs btn btn-outline-success">Subscribed</button>
+            <% }else { %> 
+              <button data-comp="<%= JSON.stringify(company)%> " type="button" class="subs btn btn-outline-primary">Subscribe</button>
+            <% } %> 
           </div>
         </div>
         <% }); %>

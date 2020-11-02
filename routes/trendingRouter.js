@@ -28,6 +28,7 @@ router.get("/trending", async (req, res) => {
   .get("/search", async (req, res) => {
     try {
       console.log(req.query);
+      console.log(req.session.dev);
       if (req.query.fltrname) {
         const regex = new RegExp(escapeRegex(req.query.fltrname), "gi");
         const dev = await Developer.findOne({ email: req.user.email });

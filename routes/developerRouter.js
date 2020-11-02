@@ -48,7 +48,7 @@ developerRouter
       res.status(500).send();
     }
   })
-  .post("/developers/subscribe/:id", developerGuest, async (req, res) => {
+  .get("/developers/subscribe/:id", developerGuest, async (req, res) => {
     try {
       console.log("!\n");
       const comp = await Company.findById(req.params.id);
