@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Company Home Page</title>
+    <title>Trending</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -32,10 +32,10 @@
         <div class="collapse navbar-collapse" id="navbarToggler">
           <ul class="navbar-nav mx-1">
             <li class="nav-item active">
-              <a class="nav-link h6" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link h6" href="/developers">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link h6" href="/trending">Company </a>
+              <a class="nav-link h6" href="#">Company </a>
             </li>
           </ul>
           <form action="/search" method="GET" class="form-inline ml-auto mr-auto">
@@ -54,18 +54,12 @@
     <div class="container text-center mt-3">
       <div class="row">
         <% companies.forEach(comp => { %>
-        <div class="card col-md-4 m-5">
+        <div class="card col-sm-4 p-3">
           <img src="/uploads/<%= comp.compPic %> " class="card-img-top" alt="<%= comp.name %> " height="300px"/>
           <div class="card-body">
             <h5 class="card-title"><%= comp.name %></h5>
-            <p class="card-text m-auto">
-              <a href="<%= comp.linkedin %>" class="btn"><i class="fab fa-linkedin-in fa-lg"></i></a>
-              <a href="<%= comp.facebook %>" class="btn"><i class="fab fa-facebook fa-lg"></i></a>
-              <a href="<%= comp.twitter %>" class="btn"><i class="fab fa-twitter fa-lg"></i></a>
-              <a href="<%= comp.instagram %>" class="btn"><i class="fab fa-instagram-square fa-lg"></i></a>
-              <a href="<%= comp.pininterest %>" class="btn"><i class="fab fa-pinterest fa-lg"></i></a>
-            </p>
-            <a href="/companies/<%= comp._id %>" class="btn btn-primary stretched-link">Go to <%= comp.name %>'s page</a>
+            <br>
+            <a href="/companies/<%= comp._id %>" target="_blank" class="btn btn-primary stretched-link">Go to <%= comp.name %>'s page</a>
           </div>
         </div>
         <% }) %>

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-    <title>Profile Page</title>
+    <title><%= dev.firstName %>'s Profile </title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -78,20 +78,6 @@
           <% if(dev._id.toString()==log._id.toString()) {%>
           <button class="btn btn-primary" data-toggle="modal" data-target="#basicEdit"><i class="fa fa-edit mr-2"></i>Edit profile</button>
           <% } %>
-        </div>
-      </div>
-      <div class="row mt-5">
-        <div class="col">
-          <p><b>Acheivement</b></p>
-          <p>Lorem</p>
-        </div>
-        <div class="col">
-          <p><b>Acheivement</b></p>
-          <p>Lorem</p>
-        </div>
-        <div class="col">
-          <p><b>Acheivement</b></p>
-          <p>Lorem</p>
         </div>
       </div>
     </div>
