@@ -23,7 +23,7 @@ const app = express();
 const port = 3000 || process.env.PORT;
 
 //mongoose connection setup using online cloud database
-const uri = process.env.MONGO_URI;
+const uri = process.env.MONGO_URI || "mongodb://localhost:27017/devHire";
 mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true });
 
 const connection = mongoose.connection;
