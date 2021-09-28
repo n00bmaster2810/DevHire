@@ -6,13 +6,14 @@ const loginCompRouter = express.Router();
 loginCompRouter.post("/loginComp", (req, res, next) => {
   passport.authenticate("local", async (err, user, info) => {
     try {
+      console.log(req.body)
       if (err) {
         req.flash("error", info.message);
         return next(err);
       }
       if (!user) {
         req.flash("error", info.message);
-        return res.redirect("/");
+        return res.redirect("/login");
       }
       const comp = await Company.findOne({ email: user.email });
       if (comp) {
@@ -27,10 +28,10 @@ loginCompRouter.post("/loginComp", (req, res, next) => {
       }
       else {
         console.log("correct");
-        return res.redirect("/"); 
+        return res.redirect("/login"); 
       }
     } catch (err) {
-      return res.redirect("/");
+      return res.redirect("/login");
     }
   })(req, res, next);
 });

@@ -20,7 +20,7 @@ const jobPostRouter = require("./routes/jobPostRouter");
 const trending = require("./routes/trendingRouter");
 const updateDev = require("./routes/updateDev");
 const app = express();
-const port = 3000 || process.env.PORT;
+const port = 5000 || process.env.PORT;
 
 //mongoose connection setup using online cloud database
 const uri = process.env.MONGO_URI || "mongodb://localhost:27017/devHire";

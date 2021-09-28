@@ -47,13 +47,13 @@
             <tbody>
               <% for(let i = 0; i < applications.length ; i++) {%>
               <tr>
-                <th scope="row"><%= i+1 %> </th>
-                <td><%= applications[i].firstName %> <%= applications[i].lastName %> </td>
+                <th scope="row"><%= i+1 %></th>
+                <td><%= applications[i].firstName %> <%= applications[i].lastName %></td>
                 <td><%= applications[i].email %></td>
-				<td><%= applications[i].mob %></td>
-				<td><%= applications[i].address %>, <%= applications[i].city %>, <%= applications[i].state %></td>
-				<td><a href="/uploads/<%= applications[i].resume %>" target="_blank">Link to the pdf</a></td>
-				<td><%=moment(applications[i].createdAt).format( 'DD-MMM-YYYY') %> </td>
+                <td><%= applications[i].mob %></td>
+                <td><%= applications[i].address %>, <%= applications[i].city %>, <%= applications[i].state %></td>
+                <td><a href="/uploads/<%= applications[i].resume %>" target="_blank">Link to the pdf</a></td>
+                <td><%=moment(applications[i].createdAt).format( 'DD-MMM-YYYY') %></td>
               </tr>
               <% } %>
             </tbody>

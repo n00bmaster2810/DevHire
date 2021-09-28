@@ -1,7 +1,16 @@
 body {
-  padding: 50px;
-  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
   background-color: rgba(170, 210, 219, 0.404);
+}
+
+.outer{
+  height: 100vh;
+  background-color: rgba(106, 210, 236, 0.164);
+}
+
+.inner{
+  background-color: rgba(106, 210, 236, 0.267);
 }
 
 .jumbotron{
@@ -9,7 +18,7 @@ body {
   background-color: #0000004d;
   background-size: cover;
 }
-
+/*
 .btn:hover{
  box-shadow: 2px 2px #0000007e;
  color: #cbecf3;
@@ -21,7 +30,7 @@ a {
 a:hover{
   text-decoration: none;
   font-size: large;
-}
+}*/
 
 .box{
   background-color: #adb1c44f;
@@ -31,10 +40,10 @@ a:hover{
   box-shadow: 0 .5rem 1rem #1a2933;
 }
 
-.btn{
+/*.btn{
   background-color: #1a2933;
   color: #ffffff;
-}
+}*/
 
 .modal-content{
   background-color: #d6e0f0;
