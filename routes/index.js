@@ -9,4 +9,12 @@ router.get("/", guest, function (req, res, next) {
   res.render("index");
 });
 
+router.get("/login", guest, (req, res) => {
+  res.render("login");
+});
+
+router.get("/register", guest, (req, res) => {
+  res.render("register");
+});
+
 module.exports = router;
